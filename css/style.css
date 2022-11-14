@@ -1,0 +1,61 @@
+body{
+    background-image: url(../images/cineoscuro.webp) ;
+    background-repeat:no-repeat;background-size: 100% 100%;background-attachment:fixed;
+}
+body h1{
+    background-color: antiquewhite;
+    text-align: center;
+    
+    
+}
+.contenedor{
+    overflow: hidden;
+    background-image: url(../images/galicia.png) ;
+    background-repeat:no-repeat;background-size: 1300px 500px;
+    position:relative;
+    width: 1300px;
+    height: 500px;
+    margin: 0 auto;
+}
+#iconoizquierda{
+
+    position:absolute;
+    margin-top: 410px;
+    
+   
+    background: url("../images/Gamepassblack.webp");
+    background-size: 50px 60px; 
+    width:50px; 
+    height:60px;
+   
+}
+#bigboss{
+
+    position:absolute;
+    
+    margin-top: 380px;
+    margin-left: -130px;
+    
+   
+    background: url("../images/vaca.png");
+    background-size: 150px 100px; 
+    width:150px; 
+    height:100px;
+  
+
+}
+#oficina{
+
+    position:absolute;
+    
+    margin-left: 1150px;
+    margin-top: 310px;
+   
+    background: url("../images/oficina.png");
+    background-size: 150px 150px; 
+    width:150px; 
+    height:150px;
+  
+    
+
+}
