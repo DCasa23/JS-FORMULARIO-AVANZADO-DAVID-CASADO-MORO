@@ -1,5 +1,5 @@
 body{
-    background-image: url(../images/cineoscuro.webp) ;
+    background-image: url(../images/fondo.jfif) ;
     background-repeat:no-repeat;background-size: 100% 100%;background-attachment:fixed;
 }
 body h1{
@@ -10,7 +10,7 @@ body h1{
 }
 .contenedor{
     overflow: hidden;
-    background-image: url(../images/galicia.png) ;
+    background-image: url(../images/fondo.jfif) ;
     background-repeat:no-repeat;background-size: 1300px 500px;
     position:relative;
     width: 1300px;
@@ -20,12 +20,9 @@ body h1{
 #iconoizquierda{
 
     position:absolute;
-    margin-top: 410px;
-    
-   
     background: url("../images/Gamepassblack.webp");
-    background-size: 50px 60px; 
-    width:50px; 
+    background-size: 150px 60px; 
+    width:150px; 
     height:60px;
    
 }
