@@ -17,19 +17,22 @@
             
     
     </div>
-    <div id="principal">
+    <div class="principal">
         
         <form id="formulario" name="formulario" method="post">
             <label for="NOMBRE">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre" placeholder="" autocomplete="off" style= "width:250px;height:20px" maxlength="20">
-            <br><br><label for="APELLIDO">Apellidos:</label><br>
-            <input type="text" id="apellidos" name="apellidos" placeholder="" autocomplete="off" style= "width:250px;height:20px" maxlength="30">
-            <br><br><label for="CORREO">Correo:</label><br>
-            <input type="text" id="correo" name="correo" style= "width:250px;height:20px" placeholder="">
-            <br><br><label for="TELEFONO">Telefono:</label><br>
-            <input type="text" id="telefono" name="telefono" style= "width:250px;height:20px" placeholder="XXX-XXX-XXX o XXX-XX-XX-XX">
-
-
+            <div id="bloque"><input type="text"  id="nombre" name="nombre" placeholder="" onkeyup="validarName()" autocomplete="off" style= "width:250px;height:20px" maxlength="20">
+            <span id="textoNombre"></span></div>
+            <br><label for="APELLIDO">Apellidos:</label><br>
+            <div id="bloque"><input type="text" id="apellidos" name="apellidos" placeholder="" onkeyup="validarApellidos()"autocomplete="off" style= "width:250px;height:20px" maxlength="30">
+            <span id="textoApellidos"></span></div>    
+            <br><label for="CORREO">Correo:</label><br>
+            <div id="bloque"><input type="text" id="correoform" name="correo" style= "width:250px;height:20px" placeholder="" onkeyup="validarCorreoForm()">
+            <span id="textoCorreo"></span></div>   
+            <br><label for="TELEFONO">Telefono:</label><br>
+            <div id="bloque"><input type="text" id="telefonoform" name="telefono" style= "width:250px;height:20px" placeholder="XXX-XXX-XXX o XXX-XX-XX-XX" onkeyup="validarTelefonoForm()">
+            <span id="textoTelefono"></span></div>    
+            <!--
 
             <br><br><label for="DNI">DNI:</label><br>
             <input type="text" id="dni" name="dni" style= "width:250px" placeholder="">
@@ -41,13 +44,16 @@
             <input type="text" id="usuario" name="usuario" style= "width:250px" placeholder="">
             <br><br><label for="DATE">Fecha de Nacimiento:</label><br>
             <input type="date" id="fecha" name="fecha" style= "width:250px"placeholder="" min="1920-01-01" max="2021-12-31" >
-            <br><br><input type="submit" placeholder="Submit"><br><br>
+            -->
+            <br><br><input type="submit" style= "width:250px;height:50px" placeholder="Submit"><br><br>
             
             
         </form>
-        <p id="parrafo"></p>
+        
     </div>
-    
+    <footer>
+        <p id="parrafo"></p>
+    </footer>
         
         <script src="js/myscript.js">
         
