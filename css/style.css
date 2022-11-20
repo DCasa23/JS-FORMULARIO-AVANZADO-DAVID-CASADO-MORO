@@ -54,9 +54,11 @@ h1 span{
     border: 2px solid black;
     width: 40%;
     margin:0px auto;
+    height: 400px;
 }
 #formulario{
     
+    overflow: hidden;
     display: block;
     margin:auto;
     text-align: center;
@@ -90,7 +92,17 @@ h1 span{
 #parrafo{
 text-align: center;
 }
-
+#form1{
+    visibility: visible;
+}
+#form2{
+    
+    visibility: hidden;
+}
+#form3{
+    
+    visibility: hidden;
+}
 #iconoizquierda{
     
     float:left;

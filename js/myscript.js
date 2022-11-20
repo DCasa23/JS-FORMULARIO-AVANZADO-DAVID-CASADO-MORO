@@ -10,98 +10,164 @@ const fecha = document.getElementById("fecha")
 const form = document.getElementById("formulario")
 const parrafo = document.getElementById("warnings")
 
-
+let contador = 0;
 
 let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
-    let regexDNI = /^(\d{8})([A-z])$/;
-    let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
+let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
+let regexDNI = /^(\d{8})([A-z])$/;
+let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
 
 
-function validarName(){
+function validarName() {
     if (nombre.value.length < 5) {
         console.log("Esto esta rojo");
-        nombre.style.border= '2px solid red';
-        nombre.style.background='#ff99b2';
+        nombre.style.border = '2px solid red';
+        nombre.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño</span>";
-        document.getElementById("textoNombre").innerHTML ="";
-        
+        document.getElementById("textoNombre").innerHTML = "";
+
         //warnings += ' El nombre esta vacio <br><br>'
         incorrecto = true;
 
-    
-    }else{
+
+    } else {
         console.log("Esto esta verde")
-        nombre.style.background=' #3CBC8D';
-        nombre.style.color='white';
-        nombre.style.border= '2px solid green';
-        document.getElementById("textoNombre").innerHTML ="<img src=\"images/ok.png\" width=\'30px\' >";
-        document.getElementById("parrafo").innerHTML ="";
+        nombre.style.background = ' #3CBC8D';
+        nombre.style.color = 'white';
+        nombre.style.border = '2px solid green';
+        document.getElementById("textoNombre").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
     }
 }
-function validarApellidos(){
+function validarApellidos() {
     if (apellidos.value.length < 5) {
         console.log("Esto esta rojo")
-        apellidos.style.background='#ff99b2';
-        apellidos.style.border= '2px solid red';
+        apellidos.style.background = '#ff99b2';
+        apellidos.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño</span>";
-        document.getElementById("textoApellidos").innerHTML ="";
+        document.getElementById("textoApellidos").innerHTML = "";
         //warnings += ' El nombre esta vacio <br><br>'
         incorrecto = true
 
-    
-    }else{
+
+    } else {
         console.log("Esto esta verde")
-        apellidos.style.background='white';
+        apellidos.style.background = 'white';
         console.log("Esto esta verde")
-        apellidos.style.background=' #3CBC8D';
-        apellidos.style.color='white';
-        apellidos.style.border= '2px solid green';
-        document.getElementById("textoApellidos").innerHTML ="<img src=\"images/ok.png\" width=\'30px\' >";
-        document.getElementById("parrafo").innerHTML ="";
+        apellidos.style.background = ' #3CBC8D';
+        apellidos.style.color = 'white';
+        apellidos.style.border = '2px solid green';
+        document.getElementById("textoApellidos").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
     }
 }
-function validarCorreoForm(){
+function validarCorreoForm() {
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!regexEmail.test(correoform.value)) {
         console.log("Esto esta rojo")
-        correo.style.background='#ff99b2';
-        correo.style.border= '2px solid red';
+        correo.style.background = '#ff99b2';
+        correo.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño</span>";
-        document.getElementById("textoCorreo").innerHTML ="";
+        document.getElementById("textoCorreo").innerHTML = "";
         //warnings += ' El nombre esta vacio <br><br>'
         incorrecto = true
 
-    
-    }else{
+
+    } else {
         console.log("Esto esta verde")
-        correo.style.background=' #3CBC8D';
-        correo.style.color='white';
-        correo.style.border= '2px solid green';
-        document.getElementById("textoCorreo").innerHTML ="<img src=\"images/ok.png\" width=\'30px\' >";
-        document.getElementById("parrafo").innerHTML ="";
+        correo.style.background = ' #3CBC8D';
+        correo.style.color = 'white';
+        correo.style.border = '2px solid green';
+        document.getElementById("textoCorreo").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
     }
 }
-function validarTelefonoForm(){
+function validarTelefonoForm() {
     let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
     if (!regexMOVIL.test(telefonoform.value)) {
         console.log("Esto esta rojo de telefono")
-        telefono.style.background='#ff99b2';
-        telefono.style.border= '2px solid red';
+        telefono.style.background = '#ff99b2';
+        telefono.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño</span>";
-        document.getElementById("textoTelefono").innerHTML ="";
+        document.getElementById("textoTelefono").innerHTML = "";
         //warnings += ' El nombre esta vacio <br><br>'
         incorrecto = true
 
-    
-    }else{
+
+    } else {
         console.log("Esto esta verde de telefono")
-        telefono.style.background=' #3CBC8D';
-        telefono.style.color='white';
-        telefono.style.border= '2px solid green';
-        document.getElementById("textoTelefono").innerHTML ="<img src=\"images/ok.png\" width=\'30px\' >";
-        document.getElementById("parrafo").innerHTML ="";
+        telefono.style.background = ' #3CBC8D';
+        telefono.style.color = 'white';
+        telefono.style.border = '2px solid green';
+        document.getElementById("textoTelefono").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
     }
+    function validarDNIForm() {
+        let regexDNI = /^(\d{8})([A-z])$/;
+        if (!regexDNI.test(dni.value)) {
+            console.log("Esto esta rojo");
+            dni.style.border = '2px solid red';
+            dni.style.background = '#ff99b2';
+            document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño</span>";
+            document.getElementById("textoNombre").innerHTML = "";
+
+            //warnings += ' El nombre esta vacio <br><br>'
+            incorrecto = true;
+
+
+        } else {
+            console.log("Esto esta verde")
+            dni.style.background = ' #3CBC8D';
+            dni.style.color = 'white';
+            dni.style.border = '2px solid green';
+            document.getElementById("textoNombre").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+            document.getElementById("parrafo").innerHTML = "";
+        }
+    }
+    function validarIBANForm() {
+        if (apellidos.value.length < 5) {
+            console.log("Esto esta rojo")
+            apellidos.style.background = '#ff99b2';
+            apellidos.style.border = '2px solid red';
+            document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño</span>";
+            document.getElementById("textoApellidos").innerHTML = "";
+            //warnings += ' El nombre esta vacio <br><br>'
+            incorrecto = true
+
+
+        } else {
+            console.log("Esto esta verde")
+            apellidos.style.background = 'white';
+            console.log("Esto esta verde")
+            apellidos.style.background = ' #3CBC8D';
+            apellidos.style.color = 'white';
+            apellidos.style.border = '2px solid green';
+            document.getElementById("textoApellidos").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+            document.getElementById("parrafo").innerHTML = "";
+        }
+    }
+    function validarUsuarioForm() {
+        let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!regexEmail.test(correoform.value)) {
+            console.log("Esto esta rojo")
+            correo.style.background = '#ff99b2';
+            correo.style.border = '2px solid red';
+            document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño</span>";
+            document.getElementById("textoCorreo").innerHTML = "";
+            //warnings += ' El nombre esta vacio <br><br>'
+            incorrecto = true
+
+
+        } else {
+            console.log("Esto esta verde")
+            correo.style.background = ' #3CBC8D';
+            correo.style.color = 'white';
+            correo.style.border = '2px solid green';
+            document.getElementById("textoCorreo").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+            document.getElementById("parrafo").innerHTML = "";
+        }
+    }
+
 }/*
 function validarName(){
     if (nombre.value.length < 5) {
@@ -118,7 +184,7 @@ function validarName(){
     */
 
 formulario.addEventListener("submit", e => {
-  
+
     e.preventDefault()
     let warnings = ""
     /*
@@ -192,88 +258,100 @@ formulario.addEventListener("submit", e => {
     
     
     */
-    document.getElementById("contenedor").innerHTML = "<br><br><label for=\"DNI\">DNI:</label><br><input type=\"text\" id=\"dni\" name=\"dni\" style= \"width:250px\" placeholder=\"\"><br><br><label for=\"IBAN\">IBAN:</label><br><input type=\"text\" id=\"iban\" name=\"iban\" style= \"width:250px\" placeholder=\"ESXX-XXXX-XXXX-XX-XXXXXXXXXX\"><br><br><label for=\"SWIFT\"  id=\"swift2\">Swift</label><br><input type=\"text\" onclick=\"cambiarSWIFT(this)\"id=\"swift\" name=\"swift\" autocomplete=\"off\" style= \"width:250px\" placeholder=\"Clicka aquí al introducir el IBAN\" maxlength=\"0\" ><br><br><label for=\"USER\">Nombre de Usuario:</label><br><input type=\"text\" id=\"usuario\" name=\"usuario\" style= \"width:250px\" placeholder=\"\"><br><br><label for=\"DATE\">Fecha de Nacimiento:</label><br><input type=\"date\" id=\"fecha\" name=\"fecha\" style= \"width:250px\"placeholder=\"\" min=\"1920-01-01\" max=\"2021-12-31\" >";
-    if (warnings.length==0){
-        alert(' Has enviado correctamente los datos.\n\nRecibiras un correo de confirmación en pocos minutos. ')
-        formulario.reset()
-        
-        warnings=""
-    }
+    /*document.getElementById("formulario").innerHTML = "<label for=\"DNI\">DNI:</label><br><input type=\"text\" id=\"dni\" name=\"dni\" onkeyup=\"validarDNIForm()\" style= \"width:250px\" placeholder=\"\"><br><br><label for=\"IBAN\">IBAN:</label><br><input type=\"text\" id=\"iban\" name=\"iban\" onkeyup=\"validarIBANForm()\" style= \"width:250px\" placeholder=\"ESXX-XXXX-XXXX-XX-XXXXXXXXXX\"><br><br><label for=\"SWIFT\"  id=\"swift2\">Swift</label><br><input type=\"text\" onclick=\"cambiarSWIFT(this)\"id=\"swift\" name=\"swift\" autocomplete=\"off\" style= \"width:250px\" placeholder=\"Clicka aquí al introducir el IBAN\" maxlength=\"0\" ><br><br><label for=\"USER\">Nombre de Usuario:</label><br><input type=\"text\" id=\"usuario\" name=\"usuario\" onkeyup=\"validarUsuarioForm()\"style= \"width:250px\" placeholder=\"\"><br><br><label for=\"DATE\">Fecha de Nacimiento:</label><br><input type=\"date\" id=\"fecha\" name=\"fecha\" style= \"width:250px\"placeholder=\"\" min=\"1920-01-01\" max=\"2021-12-31\" >";*/
+    
+        switch(contador){
+        case 0:
+            document.getElementById("form1").innerHTML = "";
+            document.getElementById("form2").style.visibility = "visible";
+            contador = 1;
+        break;
+        case 1:
+            document.getElementById("form2").innerHTML = "";
+            document.getElementById("form3").style.visibility = "visible";
+            contador = 2;
+            break;
+        case 2:
+            alert(' Has enviado correctamente los datos.\n\nRecibiras un correo de confirmación en pocos minutos. ')
+            formulario.reset()
+            break;
+        }
+    
 });
 
-function borrarTodo(){
-    
+function borrarTodo() {
+
     formulario.reset();
     swift.placeholder = "Clicka aquí al introducir el IBAN";
 }
 function cambiarSWIFT(swift) {
-    if(typeof getBICBank(iban.value.substring(5, 9)==='undefined')){
+    if (typeof getBICBank(iban.value.substring(5, 9) === 'undefined')) {
         swift.placeholder = "IBAN INCORRECTO"
-        iban.style.background='red';
-    }else{
+        iban.style.background = 'red';
+    } else {
         swift.placeholder = getBICBank(iban.value.substring(5, 9));
-        iban.style.background='white';
+        iban.style.background = 'white';
     }
 }
 
-function validarNombre(nombre){
+function validarNombre(nombre) {
     if (nombre.value.length < 1) {
-        nombre.style.background='red';
+        nombre.style.background = 'red';
     }
 }
-function validarApellido(apellidos){
+function validarApellido(apellidos) {
     if (apellidos.value.length < 1) {
-        apellidos.style.background='red';
+        apellidos.style.background = 'red';
     }
 }
-function validarCorreo(correo){
+function validarCorreo(correo) {
     if (!regexEmail.test(correo.value)) {
-        correo.style.background='red';
+        correo.style.background = 'red';
     }
 }
-function validarTelefono(telefono){
+function validarTelefono(telefono) {
     if (!regexMOVIL.test(telefono.value)) {
-        telefono.style.background='red';
+        telefono.style.background = 'red';
     }
 }
-function validarDNI(dni){
+function validarDNI(dni) {
     if (!regexDNI.test(dni.value)) {
-        dni.style.background='red';
+        dni.style.background = 'red';
     }
 }
-function validarIBAN(iban){
+function validarIBAN(iban) {
     if (!regexIBAN.test(iban.value)) {
-        iban.style.background='red';
+        iban.style.background = 'red';
     }
 }
 
-function validarUsuario(usuario){
+function validarUsuario(usuario) {
     if (usuario.value.length < 1) {
-        usuario.style.background='red';
+        usuario.style.background = 'red';
     }
 }
-function validarFecha(fecha){
-    if (fecha.value.substring(0,4)>2004||fecha.value.substring(0,4)=="") {
-        fecha.style.background='red';
+function validarFecha(fecha) {
+    if (fecha.value.substring(0, 4) > 2004 || fecha.value.substring(0, 4) == "") {
+        fecha.style.background = 'red';
     }
 }
-function presionar(x){
+function presionar(x) {
     x.style.background = "white";
 }
-function despresionar(x){
-    x.style.background =  "gainsboro";
+function despresionar(x) {
+    x.style.background = "gainsboro";
 }
-function cambiarFotoIzq(x){
-    x.src="images/derby.webp";
+function cambiarFotoIzq(x) {
+    x.src = "images/derby.webp";
 }
-function cambiarFotoDer(x){
-    x.src="images/inconveniente.webp";
+function cambiarFotoDer(x) {
+    x.src = "images/inconveniente.webp";
 }
-function volverFotoIzq(x){
-    x.src="images/quijano.jpg";
+function volverFotoIzq(x) {
+    x.src = "images/quijano.jpg";
 }
-function volverFotoDer(x){
-    x.src="images/elselu.jpg";
+function volverFotoDer(x) {
+    x.src = "images/elselu.jpg";
 }
 function getBICBank(entidad) {
 
