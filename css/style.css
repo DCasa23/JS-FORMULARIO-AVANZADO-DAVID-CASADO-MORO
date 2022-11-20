@@ -12,7 +12,7 @@ body{
     min-height: 150px;
     padding-top: 0;
 }
-h1{
+.cabecera h1{
     
     margin: auto 0;
     padding-right: 0px;
@@ -23,7 +23,7 @@ h1{
     
     text-align: center;
 }
-h1 span{
+.cabecera h1 span{
     
     background-color: rgba(6,57,112,0.9);
     padding-top: 30px;
@@ -48,7 +48,7 @@ h1 span{
 
     
 }
-.principal{
+#principal{
     padding:30px 0px;
     background-color: rgba(250, 255, 254, 0.8);
     border: 2px solid black;
@@ -83,7 +83,7 @@ h1 span{
     border: 1px solid grey;
     border-radius: 4px;
 }
-#formulario span{
+#form1 span{
     position: absolute;
 	
 
@@ -102,6 +102,57 @@ text-align: center;
 #form3{
     
     visibility: hidden;
+}
+#form3{
+    visibility: hidden;
+}
+#form4{
+    display: inline-block;
+}
+#form4 ul li{
+    float:left;
+    width: 100px;
+    height:100px;
+    background-color: rgb(64, 150, 121);
+    list-style:none;
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin: 5px;
+}
+#form4 ul li h3 {
+    background-color: rgba(250, 255, 254, 0.8);
+    margin-top: 50px;
+    font-size: 17px;
+    -webkit-text-stroke: 0.2px white;
+    color: black; 
+}
+#form5 ul li{
+    float:left;
+    width: 100px;
+    height:100px;
+    background-color: rgb(64, 150, 121);
+    list-style:none;
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin: 5px;
+}
+#form5 ul li h3 {
+    background-color: rgba(250, 255, 254, 0.8);
+    margin-top: 50px;
+    font-size: 17px;
+    -webkit-text-stroke: 0.2px white;
+    color: black; 
+}
+#opciones ul li{
+    line-height: 30px;
+    float:left;
+    width: 200px;
+    height:30px;
+    background-color: rgb(64, 150, 121);
+    list-style:none;
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin: 5px;
 }
 #iconoizquierda{
     
@@ -122,8 +173,8 @@ text-align: center;
     
    
     background: url("../images/vaca.png");
-    background-size: 150px 100px; 
-    width:150px; 
+    background-size: 100px 100px; 
+    width:100px; 
     height:100px;
   
 
@@ -143,3 +194,435 @@ text-align: center;
     
 
 }
+#Cardinals{
+    
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+   display: inline-block;
+    background: url("../images/Cardinals.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Falcons{
+
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    display: inline-block;
+    background: url("../images/Falcons.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}#Panthers{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Panthers.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}#Bears{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Bears.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Cowboys{
+    
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+   
+    display: inline-block;
+    background: url("../images/Cowboys.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Lions{
+
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    display: inline-block;
+    background: url("../images/Lions.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Packers{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Packers.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Rams{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Rams.jpg");
+    background-size: 100px 100px;
+    width:100px; 
+    height:100px;
+}
+#Vikings{
+    
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+   display: inline-block;
+    background: url("../images/Vikings.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Saints{
+
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    display: inline-block;
+    background: url("../images/Saints.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}#Giants{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Giants.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}#Eagles{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Eagles.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#SF49Ers{
+    
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+   
+    display: inline-block;
+    background: url("../images/49Ers.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Seahawks{
+
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    display: inline-block;
+    background: url("../images/Seahawks.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Buccaneers{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Buccaneers.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Commanders{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Commanders.png");
+    background-size: 100px 100px;
+    width:100px; 
+    height:100px;
+}
+#Ravens{
+    
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+   display: inline-block;
+    background: url("../images/Ravens.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Bills{
+
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    display: inline-block;
+    background: url("../images/Bills.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}#Bengals{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Bengals.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}#Browns{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Browns.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Broncos{
+    
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+   
+    display: inline-block;
+    background: url("../images/Broncos.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Texans{
+
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    display: inline-block;
+    background: url("../images/Texans.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Colts{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Colts.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Jaguars{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Jaguars.png");
+    background-size: 100px 100px;
+    width:100px; 
+    height:100px;
+}
+#Chiefs{
+    
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+   display: inline-block;
+    background: url("../images/Chiefs.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Riders{
+
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    display: inline-block;
+    background: url("../images/Riders.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}#Chargers{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Chargers.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}#Dolphins{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Dolphins.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Patriots{
+    
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+   
+    display: inline-block;
+    background: url("../images/Patriots.webp");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Jets{
+
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    display: inline-block;
+    background: url("../images/Jets.jpg");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Steelers{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Steelers.png");
+    background-size: 100px 100px; 
+    width:100px; 
+    height:100px;
+}
+#Titans{
+    display: inline-block;
+    /*
+    margin-left: 1150px;
+    margin-top: 310px;
+   */
+    background: url("../images/Titans.jpg");
+    background-size: 100px 100px;
+    width:100px; 
+    height:100px;
+}
+
+
+#sidebar {
+    visibility: hidden; 
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  background: #151719;
+  
+  transition: all 500ms linear;
+}
+#sidebarright {
+    visibility: hidden; 
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: #151719;
+    left:84%;
+    transition: all 500ms linear;
+    
+  }
+/*
+#sidebar.active {
+  left: 0px;
+}
+*/
+#sidebar ul li {
+   
+  color: rgba(230, 230, 230, .9);
+  list-style: none;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgba(100, 100, 100, .3);
+  text-align: center;
+}
+#sidebarright ul {
+    padding-inline-start: 10
+    px;
+  }
+#sidebarright ul li {
+    color: rgba(230, 230, 230, .9);
+    list-style: none;
+    padding-inline-start: 0px;
+    padding: 15px 100% 0px 0px;
+    border-bottom: 1px solid rgba(100, 100, 100, .3);
+    text-align: center;
+  }
+/*
+.logo {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto; 
+}
+
+#sidebar .toggle-btn {
+  position: absolute;
+  left: 230px;
+  top: 20px;
+  cursor: pointer;
+}
+
+#sidebar .toggle-btn span {
+  display: block;
+  width: 40px;
+  text-align: center;
+  font-size: 30px;
+  border: 3px solid #000;
+}
+*/

@@ -162,6 +162,9 @@ function validarFechaForm() {
         incorrectoFecha = false;
     }
 }
+
+    
+
 /*
 function validarUsuarioForm() {
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -301,11 +304,15 @@ formulario.addEventListener("submit", e => {
         switch (contador) {
             case 0:
                 document.getElementById("form1").innerHTML = "";
-                document.getElementById("form2").style.visibility = "visible";
+                
+                document.getElementById("form5").style.visibility = "visible";
+                document.getElementById("principal").style.padding = "0px 0px";
+                document.getElementById("principal").style.height = "550px";
+                document.getElementById("formulario").style.height = "600px";
                 contador = 1;
                 break;
             case 1:
-                document.getElementById("form2").innerHTML = "";
+                document.getElementById("form5").innerHTML = "";
                 document.getElementById("form3").style.visibility = "visible";
                 contador = 2;
                 break;
