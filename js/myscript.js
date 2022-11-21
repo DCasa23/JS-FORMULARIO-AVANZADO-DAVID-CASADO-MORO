@@ -317,6 +317,7 @@ function validarIBANForm() {
 
     } else {
         console.log("Esto esta verde de iban")
+        swift.placeholder = "CLICK AQUI PARA INTRODUCIR SWIFT"
         iban.style.background = ' #3CBC8D';
         iban.style.color = 'white';
         iban.style.border = '2px solid green';
@@ -325,20 +326,78 @@ function validarIBANForm() {
         incorrectoIBAN = false;
     }
 }
-function validarSWIFTForm(swift) {
-    if (typeof getBICBank(iban.value.substring(5, 9) === 'undefined')) {
+function validarSWIFTForm() {
+    if (getBICBank(iban.value.substring(5, 9) == null)) {
+        swift.placeholder = "IBAN INCORRECTO"
         swift.style.background = '#ff99b2';
         swift.style.border = '2px solid red';
-        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El swift tiene un formato inadecuado</span>";
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
         document.getElementById("textoSWIFT").innerHTML = "";
-        //warnings += ' El nombre esta vacio <br><br>'
+        console.log(iban.value.substring(5, 9))
+        console.log("Esto esta rojo en s")
+        swift.placeholder = "IBAN INCORRECTO"
+
         incorrectoSWIFT = true
+
+
     } else {
-        swift.placeholder = getBICBank(iban.value.substring(5, 9));
-        iban.style.background = 'white';
+        if (typeof getBICBank(iban.value.substring(5, 9) === "string")) {
+            swift.placeholder = getBICBank(iban.value.substring(5, 9));
+            if(swift.placeholder.length==11){
+            swift.style.background = ' #3CBC8D';
+            swift.style.color = 'white';
+            console.log(typeof getBICBank(iban.value.substring(5, 9)))
+            swift.style.border = '2px solid green';
+            document.getElementById("textoIBAN").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+            document.getElementById("parrafo").innerHTML = "";
+            incorrectoSWIFT = false;
+            console.log("Aqui entramos: "+getBICBank(iban.value.substring(5, 9)))
+            console.log("Esto esta verde en s")
+            console.log(typeof getBICBank(iban.value.substring(5, 9)))
+
+        }else{
+            
+            swift.style.background = '#ff99b2';
+            swift.style.border = '2px solid red';
+            document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
+            document.getElementById("textoSWIFT").innerHTML = "";
+            swift.placeholder = "IBAN INCORRECTO"
+            console.log("Esto esta rojo otra vez s")
+            console.log(getBICBank(iban.value.substring(5, 9)))
+            console.log(getBICBank(iban.value.substring(5, 9)))
+            console.log(typeof getBICBank(iban.value.substring(5, 9)))
+            incorrectoSWIFT = true
+        }
+
+        /*
+        if (typeof getBICBank(iban.value.substring(5, 9)=='undefined') || (swift.placeholder == "IBAN INCORRECTO") ) {
+            swift.style.background = '#ff99b2';
+            swift.style.border = '2px solid red';
+            document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
+            document.getElementById("textoSWIFT").innerHTML = "";
+            swift.placeholder = "IBAN INCORRECTO"
+            console.log("Esto esta rojo otra vez s")
+            console.log(getBICBank(iban.value.substring(5, 9)))
+            console.log(typeof getBICBank(iban.value.substring(5, 9)))
+            incorrectoSWIFT = true
+        } else {
+            swift.placeholder = getBICBank(iban.value.substring(5, 9));
+            swift.style.background = ' #3CBC8D';
+            swift.style.color = 'white';
+            console.log(typeof getBICBank(iban.value.substring(5, 9)))
+            swift.style.border = '2px solid green';
+            document.getElementById("textoIBAN").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+            document.getElementById("parrafo").innerHTML = "";
+            incorrectoSWIFT = false;
+            console.log(iban.value.substring(5, 9))
+            console.log("Esto esta verde en s")
+            console.log(getBICBank(iban.value.substring(5, 9)))
+        }
+        */
+    }
     }
 }
-function validarSWIFTForm() {
+/*function validarSWIFTForm() {
     
     if (typeof getBICBank(iban.value.substring(5, 9) === 'undefined')) {
         
@@ -361,7 +420,7 @@ function validarSWIFTForm() {
         document.getElementById("parrafo").innerHTML = "";
         incorrectoSWIFT = false;
     }
-}
+}*/
 
 
 /*
