@@ -1,14 +1,20 @@
-const nombre = document.getElementById("nombre")
-const apellidos = document.getElementById("apellidos")
+const nombre = document.getElementById("nombreform")
+const apellidos = document.getElementById("apellidosform")
 const correo = document.getElementById("correoform")
 const telefono = document.getElementById("telefonoform")
-const dni = document.getElementById("dni")
-const iban = document.getElementById("iban")
-const swift = document.getElementById("swift")
+const dni = document.getElementById("dniform")
+const iban = document.getElementById("ibanform")
+const swift = document.getElementById("swiftform")
 const usuario = document.getElementById("usuarioform")
 const fecha = document.getElementById("fechaform")
 const form = document.getElementById("formulario")
 const parrafo = document.getElementById("warnings")
+const password = document.getElementById("passwordform")
+const direccion = document.getElementById("direccionform")
+const ciudad = document.getElementById("ciudadform")
+const cp = document.getElementById("cpform")
+const pais = document.getElementById("paisform")
+
 
 let contador = 0;
 
@@ -93,6 +99,28 @@ function validarCorreoForm() {
         incorrectoCorreo = false;
     }
 }
+function validarPassword() {
+    if (password.value.length < 5) {
+        console.log("Esto esta rojo");
+        password.style.border = '2px solid red';
+        password.style.background = '#ff99b2';
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El password introducido es pequeño o esta vacio</span>";
+        document.getElementById("textoPassword").innerHTML = "";
+
+        //warnings += ' El password esta vacio <br><br>'
+        incorrectoPassword = true;
+
+
+    } else {
+        console.log("Esto esta verde")
+        password.style.background = ' #3CBC8D';
+        password.style.color = 'white';
+        password.style.border = '2px solid green';
+        document.getElementById("textoPassword").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
+        incorrectoPassword = false;
+    }
+}
 function validarTelefonoForm() {
     let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
     if (!regexMOVIL.test(telefonoform.value)) {
@@ -140,7 +168,7 @@ function validarUsuarioForm() {
 
 
 function validarFechaForm() {
-    if (fecha.value.substring(0,4)>2004||fecha.value.substring(0,4)=="") {
+    if (fecha.value.substring(0, 4) > 2004 || fecha.value.substring(0, 4) == "") {
         console.log("Esto esta rojo en FECHA")
         fecha.style.background = '#ff99b2';
         fecha.style.border = '2px solid red';
@@ -162,8 +190,179 @@ function validarFechaForm() {
         incorrectoFecha = false;
     }
 }
+function validarDNIForm() {
+    let regexDNI = /^(\d{8})([A-z])$/;
+    if (!regexDNI.test(dni.value)) {
+        console.log("Esto esta rojo");
+        dni.style.border = '2px solid red';
+        dni.style.background = '#ff99b2';
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El dni introducido es pequeño o esta vacio</span>";
+        document.getElementById("textoDni").innerHTML = "";
 
+        //warnings += ' El Dni esta vacio <br><br>'
+        incorrectoDni = true;
+
+        password
+    } else {
+        console.log("Esto esta verde")
+        dni.style.background = ' #3CBC8D';
+        dni.style.color = 'white';
+        dni.style.border = '2px solid green';
+        document.getElementById("textoDni").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
+        incorrectoDni = false;
+    }
+}
+
+function validarDireccionForm() {
+    if (direccion.value.length < 5) {
+        console.log("Esto esta rojo");
+        direccion.style.border = '2px solid red';
+        direccion.style.background = '#ff99b2';
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El direccion introducido es pequeño o esta vacio</span>";
+        document.getElementById("textoDireccion").innerHTML = "";
+
+        //warnings += ' El direccion esta vacio <br><br>'
+        incorrectoDireccion = true;
+
+
+    } else {
+        console.log("Esto esta verde")
+        direccion.style.background = ' #3CBC8D';
+        direccion.style.color = 'white';
+        direccion.style.border = '2px solid green';
+        document.getElementById("textoDireccion").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
+        incorrectoDireccion = false;
+    }
+}
+function validarCPForm() {
+    if (cp.value.length != 5) {
+        console.log("Esto esta rojo");
+        cp.style.border = '2px solid red';
+        cp.style.background = '#ff99b2';
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El cp introducido es pequeño o esta vacio</span>";
+        document.getElementById("textoCP").innerHTML = "";
+
+        //warnings += ' El cp esta vacio <br><br>'
+        incorrectoCP = true;
+
+
+    } else {
+        console.log("Esto esta verde")
+        cp.style.background = ' #3CBC8D';
+        cp.style.color = 'white';
+        cp.style.border = '2px solid green';
+        document.getElementById("textoCP").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
+        incorrectoCP = false;
+    }
+}
+
+function validarCiudadForm() {
+    if (ciudad.value.length <= 2) {
+        console.log("Esto esta rojo");
+        ciudad.style.border = '2px solid red';
+        ciudad.style.background = '#ff99b2';
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El ciudad introducido es pequeño o esta vacio</span>";
+        document.getElementById("textoCiudad").innerHTML = "";
+
+        //warnings += ' El ciudad esta vacio <br><br>'
+        incorrectoCiudad = true;
+
+
+    } else {
+        console.log("Esto esta verde")
+        ciudad.style.background = ' #3CBC8D';
+        ciudad.style.color = 'white';
+        ciudad.style.border = '2px solid green';
+        document.getElementById("textoCiudad").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
+        incorrectoCiudad = false;
+    }
+}
+function validarPaisForm() {
+    if (pais.value.length < 4) {
+        console.log("Esto esta rojo");
+        pais.style.border = '2px solid red';
+        pais.style.background = '#ff99b2';
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El pais introducido es pequeño o esta vacio</span>";
+        document.getElementById("textoPais").innerHTML = "";
+
+        //warnings += ' El pais esta vacio <br><br>'
+        incorrectoPais = true;
+
+
+    } else {
+        console.log("Esto esta verde")
+        pais.style.background = ' #3CBC8D';
+        pais.style.color = 'white';
+        pais.style.border = '2px solid green';
+        document.getElementById("textoPais").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
+        incorrectoPais = false;
+    }
+}
+function validarIBANForm() {
+    let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
+    if (!regexIBAN.test(iban.value)) {
+        console.log("Esto esta rojo de iban")
+        iban.style.background = '#ff99b2';
+        iban.style.border = '2px solid red';
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
+        document.getElementById("textoIBAN").innerHTML = "";
+        //warnings += ' El nombre esta vacio <br><br>'
+        incorrectoIBAN = true
+
+
+    } else {
+        console.log("Esto esta verde de iban")
+        iban.style.background = ' #3CBC8D';
+        iban.style.color = 'white';
+        iban.style.border = '2px solid green';
+        document.getElementById("textoIBAN").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
+        incorrectoIBAN = false;
+    }
+}
+function validarSWIFTForm(swift) {
+    if (typeof getBICBank(iban.value.substring(5, 9) === 'undefined')) {
+        swift.style.background = '#ff99b2';
+        swift.style.border = '2px solid red';
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El swift tiene un formato inadecuado</span>";
+        document.getElementById("textoSWIFT").innerHTML = "";
+        //warnings += ' El nombre esta vacio <br><br>'
+        incorrectoSWIFT = true
+    } else {
+        swift.placeholder = getBICBank(iban.value.substring(5, 9));
+        iban.style.background = 'white';
+    }
+}
+function validarSWIFTForm() {
     
+    if (typeof getBICBank(iban.value.substring(5, 9) === 'undefined')) {
+        
+        console.log("Esto esta rojo de swift")
+        swift.style.background = '#ff99b2';
+        swift.style.border = '2px solid red';
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El swift tiene un formato inadecuado</span>";
+        document.getElementById("textoSWIFT").innerHTML = "";
+        //warnings += ' El nombre esta vacio <br><br>'
+        incorrectoSWIFT = true
+
+
+    } else {
+        console.log("Esto esta verde de swift")
+        swift.placeholder = getBICBank(iban.value.substring(5, 9));
+        swift.style.background = ' #3CBC8D';
+        swift.style.color = 'white';
+        swift.style.border = '2px solid green';
+        document.getElementById("textoSWIFT").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("parrafo").innerHTML = "";
+        incorrectoSWIFT = false;
+    }
+}
+
 
 /*
 function validarUsuarioForm() {
@@ -205,26 +404,53 @@ function validarName(){
     */
 
 formulario.addEventListener("submit", e => {
-    console.log("COntador: "+contador);
-    incorrecto=true;
+    console.log("COntador: " + contador);
+    incorrecto1 = true;
+    incorrecto2 = true;
+    incorrecto3 = true;
+
     e.preventDefault();
     let warnings = ""
-    validarApellidos();
-    validarCorreoForm();
-    validarFechaForm();
-    validarTelefonoForm();
-    validarUsuarioForm();
-    validarName();
-    if(incorrectoApellidos==false&&incorrectoNombre==false&&incorrectoTelefono==false&&incorrectoUsuario==false&&incorrectoFecha==false&&incorrectoCorreo==false){
-        incorrecto=false;
+    if (contador == 0) {
+        validarApellidos();
+        validarPassword();
+        validarCorreoForm();
+        validarFechaForm();
+        validarUsuarioForm();
+        validarName();
     }
-    console.log("ES nombre: "+incorrectoNombre);
-    console.log("ES apellido: "+incorrectoApellidos);
-    console.log("EScorreo: "+incorrectoCorreo);
-    console.log("EStelefono: "+incorrectoTelefono);
-    console.log("ESusuarii: "+incorrectoUsuario);
-    console.log("ESfecha: "+incorrectoFecha);
-    console.log("ES: "+incorrecto);
+    if (contador == 1) {
+        validarCPForm();
+        validarDireccionForm();
+        validarCiudadForm();
+        validarDNIForm();
+        validarPaisForm();
+        validarTelefonoForm();
+    }
+    if (contador == 2) {
+        validarIBANForm();
+        validarSWIFTForm();
+    }
+    if (incorrectoApellidos == false && incorrectoNombre == false && incorrectoPassword == false && incorrectoUsuario == false && incorrectoFecha == false && incorrectoCorreo == false) {
+        incorrecto1 = false;
+    }
+    if (contador == 1) {
+        if (incorrectoCiudad == false && incorrectoCP == false && incorrectoPais == false && incorrectoTelefono == false && incorrectoDni == false && incorrectoDireccion == false) {
+            incorrecto2 = false;
+        }
+    }
+    if (contador == 2) {
+        if (incorrectoSWIFT == false && incorrectoIBAN == false) {
+            incorrecto3 = false;
+        }
+    }
+    console.log("ES nombre: " + incorrectoNombre);
+    console.log("ES apellido: " + incorrectoApellidos);
+    console.log("EScorreo: " + incorrectoCorreo);
+    console.log("ES Passw: " + incorrectoPassword);
+    console.log("ESusuarii: " + incorrectoUsuario);
+    console.log("ESfecha: " + incorrectoFecha);
+    console.log("ES: " + incorrecto1);
     console.log(nombre.value.length);
     /*
     document.getElementById("parrafo").innerHTML = "";
@@ -298,29 +524,35 @@ formulario.addEventListener("submit", e => {
     
     */
     /*document.getElementById("formulario").innerHTML = "<label for=\"DNI\">DNI:</label><br><input type=\"text\" id=\"dni\" name=\"dni\" onkeyup=\"validarDNIForm()\" style= \"width:250px\" placeholder=\"\"><br><br><label for=\"IBAN\">IBAN:</label><br><input type=\"text\" id=\"iban\" name=\"iban\" onkeyup=\"validarIBANForm()\" style= \"width:250px\" placeholder=\"ESXX-XXXX-XXXX-XX-XXXXXXXXXX\"><br><br><label for=\"SWIFT\"  id=\"swift2\">Swift</label><br><input type=\"text\" onclick=\"cambiarSWIFT(this)\"id=\"swift\" name=\"swift\" autocomplete=\"off\" style= \"width:250px\" placeholder=\"Clicka aquí al introducir el IBAN\" maxlength=\"0\" ><br><br><label for=\"USER\">Nombre de Usuario:</label><br><input type=\"text\" id=\"usuario\" name=\"usuario\" onkeyup=\"validarUsuarioForm()\"style= \"width:250px\" placeholder=\"\"><br><br><label for=\"DATE\">Fecha de Nacimiento:</label><br><input type=\"date\" id=\"fecha\" name=\"fecha\" style= \"width:250px\"placeholder=\"\" min=\"1920-01-01\" max=\"2021-12-31\" >";*/
-    if (incorrecto == true) {
-        console.log("TODO FALSO");
-    } else {
+    if ((incorrecto1 == false && contador == 0) || (incorrecto2 == false && contador == 1) || (incorrecto3 == false && contador == 2)) {
         switch (contador) {
             case 0:
                 document.getElementById("form1").innerHTML = "";
-                
-                document.getElementById("form5").style.visibility = "visible";
-                document.getElementById("principal").style.padding = "0px 0px";
-                document.getElementById("principal").style.height = "550px";
-                document.getElementById("formulario").style.height = "600px";
+                document.getElementById("form2").style.visibility = "visible";
                 contador = 1;
                 break;
             case 1:
-                document.getElementById("form5").innerHTML = "";
+                document.getElementById("form2").innerHTML = "";
                 document.getElementById("form3").style.visibility = "visible";
                 contador = 2;
                 break;
             case 2:
+                document.getElementById("form3").innerHTML = "";
+                document.getElementById("form4").style.visibility = "visible";
+                document.getElementById("principal").style.padding = "0px 0px";
+                document.getElementById("principal").style.height = "550px";
+                document.getElementById("formulario").style.height = "600px";
+                contador = 3;
+                break;
+            case 4:
+                document.getElementById("form4").innerHTML = "";
+                document.getElementById("form5").style.visibility = "visible";
                 alert(' Has enviado correctamente los datos.\n\nRecibiras un correo de confirmación en pocos minutos. ')
                 formulario.reset()
                 break;
         }
+    } else {
+        console.log("TODO ES FALSO")
     }
 });
 
@@ -329,7 +561,8 @@ function borrarTodo() {
     formulario.reset();
     swift.placeholder = "Clicka aquí al introducir el IBAN";
 }
-function cambiarSWIFT(swift) {
+/*
+function validarSWIFTForm(swift) {
     if (typeof getBICBank(iban.value.substring(5, 9) === 'undefined')) {
         swift.placeholder = "IBAN INCORRECTO"
         iban.style.background = 'red';
@@ -338,7 +571,7 @@ function cambiarSWIFT(swift) {
         iban.style.background = 'white';
     }
 }
-
+*/
 function validarNombre(nombre) {
     if (nombre.value.length < 1) {
         nombre.style.background = 'red';
@@ -399,7 +632,7 @@ function volverFotoDer(x) {
     x.src = "images/elselu.jpg";
 }
 function getBICBank(entidad) {
-
+    console.log("ha ENTRADO");
     var bicMap = new Object();
     bicMap["0001"] = "BSABESBBXXX";
     bicMap["0003"] = "BDEPESM1XXX";
