@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/Gamepassblack.webp" type="image/png" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <title>NFL PASS RETRO</title>
 </head>
 
@@ -25,6 +26,7 @@
 
     </div>
     <div id="sidebar">
+        <h3 id="tituloEquipo"></h3>
         <ul>
 
             <li>Home</li>
@@ -72,7 +74,7 @@
                     <span id="textoPassword"></span>
                 </div>
                 <br><label for="FECHA">Fecha de Nacimiento:</label><br>
-                <div id="bloque"><input type="date" id="fechaform" name="fecha" style="width:250px" placeholder=""
+                <div id="bloque"><input type="date" id="fechaform" name="fecha" style="width:250px;height:20px" placeholder=""
                         min="1920-01-01" max="2021-12-31">
                     <span id="textoFecha"></span>
                 </div>
@@ -80,12 +82,12 @@
             </div>
             <div id="form2">
                 <label for="DNI">DNI:</label><br>
-                <div id="bloque"><input type="text" id="dniform" name="dni" style="width:250px" placeholder=""
+                <div id="bloque"><input type="text" id="dniform" name="dni" style="width:250px;height:20px" placeholder=""
                         onkeyup="validarDNIForm()">
                     <span id="textoDni"></span>
                 </div>
                 <br><label for="TELEFONO">Telefono:</label><br>
-                <div id="bloque"><input type="text" id="telefonoform" name="telefono" style="width:250px"
+                <div id="bloque"><input type="text" id="telefonoform" name="telefono" style="width:250px;height:20px"
                         placeholder="XXX-XXX-XXX o XXX-XX-XX-XX" onkeyup="validarTelefonoForm()">
                     <span id="textoTelefono"></span>
                 </div>
@@ -115,194 +117,26 @@
             </div>
             <div id="form3">
                 <br><br><label for="IBAN">IBAN:</label><br>
-                <input type="text" id="ibanform" name="iban" style="width:250px" placeholder="ESXX-XXXX-XXXX-XX-XXXXXXXXXX"  onkeyup="validarIBANForm()">
+                <div id="bloque"><input type="text" id="ibanform" name="iban" style="width:250px;height:20px" placeholder="ESXX-XXXX-XXXX-XX-XXXXXXXXXX"  onkeyup="validarIBANForm()">
                     <span id="textoIBAN"></span>
                 </div>
                 <br><label for="SWIFT" id="swift2">Swift</label><br>
-                <input type="text" onclick="validarSWIFTForm(this)" id="swiftform" name="swift" autocomplete="off"
-                    style="width:250px" placeholder="Clicka aquí al introducir el IBAN" maxlength="0">
+                <div id="bloque"><input type="text" onclick="validarSWIFTForm(this)" id="swiftform" name="swift" autocomplete="off"
+                    style="width:250px;height:20px" placeholder="Clicka aquí al introducir el IBAN" maxlength="0">
                     <span id="textoSWIFT"></span>
                 </div>
                 
                     
                 <br><br><input type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
             </div>
-            <div id="form5">
+            <div id="form4">
                 <div id="opciones">
                     <ul>
-                        <li>NFC</li>
-                        <li>AFC</li>
+                        <li onclick="moverNFC()">NFC</li>
+                        <li onclick="moverAFC()">AFC</li>
                     </ul>
                 </div>
-                <div>
-                    <ul>
-                        <li id="Cardinals">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Arizona</span>
-                                    <span>Cardinals</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Falcons">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Atlanta</span><br>
-                                    <span>Falcons</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Panthers">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Carolina</span>
-                                    <span>Panthers</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Bears">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Chicago</span><br>
-                                    <span>Bears</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Cowboys">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Dallas</span><br>
-                                    <span>Cowboys</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Lions">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Detroits</span><br>
-                                    <span>Lions</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Packers">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Green Bay</span>
-                                    <span>Packers</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Rams">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Los Angeles</span><br>
-                                    <span>Rams</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Vikings">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Minnesota</span>
-                                    <span>Vikings</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Saints">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>New Orleans</span><br>
-                                    <span>Saints</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Giants">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>New York</span>
-                                    <span>Giants</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Eagles">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Philadelphia</span><br>
-                                    <span>Eagles</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="SF49Ers">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>SanFrancisco</span>
-                                    <span>49Ers</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Seahawks">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Seattle</span><br>
-                                    <span>Seahawks</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Buccaneers">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Tampa Bay</span>
-                                    <span>Buccaneers</span>
-                                </h3>
-                            </div>
-                        </li>
-                        <li id="Commanders">
-                            <div>
-                                <a></a>
-                                <span></span>
-                                <h3>
-                                    <span>Washington</span>
-                                    <span>Commanders</span>
-                                </h3>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-                <br><br><input type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
-            </div>
-            <div id="form4">Conferencia Nacional
-                <div>
+                <div id="equipos">
                     <ul>
                         <li id="Ravens">
                             <div>
@@ -467,8 +301,183 @@
 
                     </ul>
                 </div>
-                <br><br><input type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
+                <br><br><input id="botonEnviar" type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
             </div>
+            <div id="form5">
+                <div id="opciones">
+                    <ul>
+                        <li onclick="moverNFC()">NFC</li>
+                        <li onclick="moverAFC()">AFC</li>
+                    </ul>
+                </div>
+                <div id="equipos">
+                    <ul>
+                        <li id="Cardinals">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Arizona</span>
+                                    <span>Cardinals</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Falcons">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Atlanta</span><br>
+                                    <span>Falcons</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Panthers">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Carolina</span>
+                                    <span>Panthers</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Bears">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Chicago</span><br>
+                                    <span>Bears</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Cowboys">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Dallas</span><br>
+                                    <span>Cowboys</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Lions">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Detroits</span><br>
+                                    <span>Lions</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Packers">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Green Bay</span>
+                                    <span>Packers</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Rams">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Los Angeles</span><br>
+                                    <span>Rams</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Vikings">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Minnesota</span>
+                                    <span>Vikings</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Saints">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>New Orleans</span><br>
+                                    <span>Saints</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Giants">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>New York</span>
+                                    <span>Giants</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Eagles">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Philadelphia</span><br>
+                                    <span>Eagles</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="SF49Ers">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>SanFrancisco</span>
+                                    <span>49Ers</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Seahawks">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Seattle</span><br>
+                                    <span>Seahawks</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Buccaneers">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Tampa Bay</span>
+                                    <span>Buccaneers</span>
+                                </h3>
+                            </div>
+                        </li>
+                        <li id="Commanders">
+                            <div>
+                                <a></a>
+                                <span></span>
+                                <h3>
+                                    <span>Washington</span>
+                                    <span>Commanders</span>
+                                </h3>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <br><br><input id="botonEnviar" type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
+            </div>
+           
 
 
 

@@ -15,7 +15,8 @@ const ciudad = document.getElementById("ciudadform")
 const cp = document.getElementById("cpform")
 const pais = document.getElementById("paisform")
 
-
+let colorequipo="";
+let equipo2="";
 let contador = 0;
 
 let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -32,7 +33,42 @@ function validarTodo(){
     validarName();
 }
 */
+/*
+function AbrirMenu(){
+    document.getElementById("sidebar").style.visibility="visible";
+    const id = this.getAttribute("id");
+    console.log(id);
+}
+*/
+$("#equipos li").click(function() {
+    $("#sidebar").animate({opacity: '0.0'}, "high");
+    $("#sidebar").animate({opacity: '0.8'}, "slow");
+    $("#sidebar").css('visibility','visible');
+    $("#tituloEquipo").empty();
+    colorequipo=$(this).css('background-image');
+    colorequipo = colorequipo.replace('url(','').replace(')','').replace(/\"/gi, "");
+    console.log(colorequipo);
+    $("#tituloEquipo").append("<img src="+colorequipo+" style=\"width:100px\";\"height:200px\">");
+    equipo2=$(this).attr('id');
+    console.log(equipo2); 
+});
 
+
+
+/*
+$('#equipos ul li').on('click', function() {
+    var elmId = $("li").attr("id");
+    alert(elmId);
+  })
+  */
+function moverNFC(){
+    document.getElementById("form4").style.display="block";
+    document.getElementById("form5").style.display="none";
+}
+function moverAFC(){
+    document.getElementById("form4").style.display="none";
+    document.getElementById("form5").style.display="block";
+}
 function validarName() {
     if (nombre.value.length < 5) {
         console.log("Esto esta rojo");
@@ -50,7 +86,7 @@ function validarName() {
         nombre.style.background = ' #3CBC8D';
         nombre.style.color = 'white';
         nombre.style.border = '2px solid green';
-        document.getElementById("textoNombre").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoNombre").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoNombre = false;
     }
@@ -72,7 +108,7 @@ function validarApellidos() {
         apellidos.style.background = ' #3CBC8D';
         apellidos.style.color = 'white';
         apellidos.style.border = '2px solid green';
-        document.getElementById("textoApellidos").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoApellidos").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoApellidos = false;
     }
@@ -94,7 +130,7 @@ function validarCorreoForm() {
         correo.style.background = ' #3CBC8D';
         correo.style.color = 'white';
         correo.style.border = '2px solid green';
-        document.getElementById("textoCorreo").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoCorreo").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoCorreo = false;
     }
@@ -116,7 +152,7 @@ function validarPassword() {
         password.style.background = ' #3CBC8D';
         password.style.color = 'white';
         password.style.border = '2px solid green';
-        document.getElementById("textoPassword").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoPassword").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoPassword = false;
     }
@@ -138,7 +174,7 @@ function validarTelefonoForm() {
         telefono.style.background = ' #3CBC8D';
         telefono.style.color = 'white';
         telefono.style.border = '2px solid green';
-        document.getElementById("textoTelefono").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoTelefono").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoTelefono = false;
     }
@@ -160,7 +196,7 @@ function validarUsuarioForm() {
         usuario.style.background = ' #3CBC8D';
         usuario.style.color = 'white';
         usuario.style.border = '2px solid green';
-        document.getElementById("textoUsuario").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoUsuario").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoUsuario = false;
     }
@@ -185,7 +221,7 @@ function validarFechaForm() {
         fecha.style.background = ' #3CBC8D';
         fecha.style.color = 'white';
         fecha.style.border = '2px solid green';
-        document.getElementById("textoFecha").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoFecha").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoFecha = false;
     }
@@ -208,7 +244,7 @@ function validarDNIForm() {
         dni.style.background = ' #3CBC8D';
         dni.style.color = 'white';
         dni.style.border = '2px solid green';
-        document.getElementById("textoDni").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoDni").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoDni = false;
     }
@@ -231,7 +267,7 @@ function validarDireccionForm() {
         direccion.style.background = ' #3CBC8D';
         direccion.style.color = 'white';
         direccion.style.border = '2px solid green';
-        document.getElementById("textoDireccion").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoDireccion").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoDireccion = false;
     }
@@ -253,7 +289,7 @@ function validarCPForm() {
         cp.style.background = ' #3CBC8D';
         cp.style.color = 'white';
         cp.style.border = '2px solid green';
-        document.getElementById("textoCP").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoCP").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoCP = false;
     }
@@ -276,7 +312,7 @@ function validarCiudadForm() {
         ciudad.style.background = ' #3CBC8D';
         ciudad.style.color = 'white';
         ciudad.style.border = '2px solid green';
-        document.getElementById("textoCiudad").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoCiudad").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoCiudad = false;
     }
@@ -298,7 +334,7 @@ function validarPaisForm() {
         pais.style.background = ' #3CBC8D';
         pais.style.color = 'white';
         pais.style.border = '2px solid green';
-        document.getElementById("textoPais").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoPais").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoPais = false;
     }
@@ -321,7 +357,7 @@ function validarIBANForm() {
         iban.style.background = ' #3CBC8D';
         iban.style.color = 'white';
         iban.style.border = '2px solid green';
-        document.getElementById("textoIBAN").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+        document.getElementById("textoIBAN").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoIBAN = false;
     }
@@ -348,7 +384,7 @@ function validarSWIFTForm() {
             swift.style.color = 'white';
             console.log(typeof getBICBank(iban.value.substring(5, 9)))
             swift.style.border = '2px solid green';
-            document.getElementById("textoIBAN").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
+            document.getElementById("textoSWIFT").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
             document.getElementById("parrafo").innerHTML = "";
             incorrectoSWIFT = false;
             console.log("Aqui entramos: "+getBICBank(iban.value.substring(5, 9)))
@@ -369,31 +405,7 @@ function validarSWIFTForm() {
             incorrectoSWIFT = true
         }
 
-        /*
-        if (typeof getBICBank(iban.value.substring(5, 9)=='undefined') || (swift.placeholder == "IBAN INCORRECTO") ) {
-            swift.style.background = '#ff99b2';
-            swift.style.border = '2px solid red';
-            document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
-            document.getElementById("textoSWIFT").innerHTML = "";
-            swift.placeholder = "IBAN INCORRECTO"
-            console.log("Esto esta rojo otra vez s")
-            console.log(getBICBank(iban.value.substring(5, 9)))
-            console.log(typeof getBICBank(iban.value.substring(5, 9)))
-            incorrectoSWIFT = true
-        } else {
-            swift.placeholder = getBICBank(iban.value.substring(5, 9));
-            swift.style.background = ' #3CBC8D';
-            swift.style.color = 'white';
-            console.log(typeof getBICBank(iban.value.substring(5, 9)))
-            swift.style.border = '2px solid green';
-            document.getElementById("textoIBAN").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
-            document.getElementById("parrafo").innerHTML = "";
-            incorrectoSWIFT = false;
-            console.log(iban.value.substring(5, 9))
-            console.log("Esto esta verde en s")
-            console.log(getBICBank(iban.value.substring(5, 9)))
-        }
-        */
+        
     }
     }
 }
@@ -582,30 +594,30 @@ formulario.addEventListener("submit", e => {
     
     
     */
-    /*document.getElementById("formulario").innerHTML = "<label for=\"DNI\">DNI:</label><br><input type=\"text\" id=\"dni\" name=\"dni\" onkeyup=\"validarDNIForm()\" style= \"width:250px\" placeholder=\"\"><br><br><label for=\"IBAN\">IBAN:</label><br><input type=\"text\" id=\"iban\" name=\"iban\" onkeyup=\"validarIBANForm()\" style= \"width:250px\" placeholder=\"ESXX-XXXX-XXXX-XX-XXXXXXXXXX\"><br><br><label for=\"SWIFT\"  id=\"swift2\">Swift</label><br><input type=\"text\" onclick=\"cambiarSWIFT(this)\"id=\"swift\" name=\"swift\" autocomplete=\"off\" style= \"width:250px\" placeholder=\"Clicka aquí al introducir el IBAN\" maxlength=\"0\" ><br><br><label for=\"USER\">Nombre de Usuario:</label><br><input type=\"text\" id=\"usuario\" name=\"usuario\" onkeyup=\"validarUsuarioForm()\"style= \"width:250px\" placeholder=\"\"><br><br><label for=\"DATE\">Fecha de Nacimiento:</label><br><input type=\"date\" id=\"fecha\" name=\"fecha\" style= \"width:250px\"placeholder=\"\" min=\"1920-01-01\" max=\"2021-12-31\" >";*/
+    
     if ((incorrecto1 == false && contador == 0) || (incorrecto2 == false && contador == 1) || (incorrecto3 == false && contador == 2)) {
         switch (contador) {
             case 0:
-                document.getElementById("form1").innerHTML = "";
-                document.getElementById("form2").style.visibility = "visible";
+                document.getElementById("form1").style.display="none";
+                document.getElementById("form2").style.display="block";
                 contador = 1;
                 break;
             case 1:
-                document.getElementById("form2").innerHTML = "";
-                document.getElementById("form3").style.visibility = "visible";
+                document.getElementById("form2").style.display="none";
+                document.getElementById("form3").style.display="block";
                 contador = 2;
                 break;
             case 2:
-                document.getElementById("form3").innerHTML = "";
-                document.getElementById("form4").style.visibility = "visible";
+                document.getElementById("form3").style.display="none";
+                document.getElementById("form4").style.display="block";
                 document.getElementById("principal").style.padding = "0px 0px";
-                document.getElementById("principal").style.height = "550px";
-                document.getElementById("formulario").style.height = "600px";
+                document.getElementById("principal").style.height = "750px";
+                document.getElementById("formulario").style.height = "800px";
                 contador = 3;
                 break;
             case 4:
-                document.getElementById("form4").innerHTML = "";
-                document.getElementById("form5").style.visibility = "visible";
+                document.getElementById("form5").style.display="none";
+                document.getElementById("form4").style.display="block";
                 alert(' Has enviado correctamente los datos.\n\nRecibiras un correo de confirmación en pocos minutos. ')
                 formulario.reset()
                 break;
@@ -672,24 +684,7 @@ function validarFecha(fecha) {
         fecha.style.background = 'red';
     }
 }
-function presionar(x) {
-    x.style.background = "white";
-}
-function despresionar(x) {
-    x.style.background = "gainsboro";
-}
-function cambiarFotoIzq(x) {
-    x.src = "images/derby.webp";
-}
-function cambiarFotoDer(x) {
-    x.src = "images/inconveniente.webp";
-}
-function volverFotoIzq(x) {
-    x.src = "images/quijano.jpg";
-}
-function volverFotoDer(x) {
-    x.src = "images/elselu.jpg";
-}
+
 function getBICBank(entidad) {
     console.log("ha ENTRADO");
     var bicMap = new Object();

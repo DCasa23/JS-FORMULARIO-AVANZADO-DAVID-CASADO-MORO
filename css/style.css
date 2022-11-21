@@ -52,12 +52,12 @@ body{
     padding:30px 0px;
     background-color: rgba(250, 255, 254, 0.8);
     border: 2px solid black;
-    width: 40%;
+    width: 650px;
     margin:0px auto;
-    height: 460px;
+    height: 560px;
 }
 #formulario{
-    height:500px;
+    height:600px;
     overflow: hidden;
     display: block;
     margin:auto;
@@ -95,27 +95,32 @@ body{
 
 	
 }
+#opciones{
+    margin:30px 0px;
+}
 #parrafo{
 text-align: center;
 }
 #form1{
-    visibility: visible;
+    display:none;
 }
 #form2{
     
-    visibility: hidden;
+    display:none;
 }
 #form3{
     
-    visibility: hidden;
+    display:none;
 }
 
 #form4{
-    visibility: hidden;
+    
+    display:block;
     
 }
 #form5{
-    visibility: hidden;
+    
+    display:none;
     
 }
 #form4 ul li{
@@ -162,6 +167,13 @@ text-align: center;
     border: 1px solid grey;
     border-radius: 15px;
     margin: 5px;
+    margin-bottom: 25px;
+}
+#equipos{
+    margin-bottom: 30px;
+}
+#botonEnviar{
+    margin: 50px 0px 50px 0px;
 }
 #iconoizquierda{
     
@@ -210,7 +222,7 @@ text-align: center;
     margin-top: 310px;
    */
    display: inline-block;
-    background: url("../images/Cardinals.jpg");
+    background-image: url("../images/Cardinals.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -222,7 +234,7 @@ text-align: center;
     margin-top: 310px;
    */
     display: inline-block;
-    background: url("../images/Falcons.jpg");
+    background-image: url("../images/Falcons.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -232,7 +244,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Panthers.jpg");
+    background-image: url("../images/Panthers.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -242,7 +254,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Bears.png");
+    background-image: url("../images/Bears.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -255,7 +267,7 @@ text-align: center;
    */
    
     display: inline-block;
-    background: url("../images/Cowboys.png");
+    background-image: url("../images/Cowboys.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -267,7 +279,7 @@ text-align: center;
     margin-top: 310px;
    */
     display: inline-block;
-    background: url("../images/Lions.jpg");
+    background-image: url("../images/Lions.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -278,7 +290,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Packers.jpg");
+    background-image: url("../images/Packers.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -289,7 +301,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Rams.jpg");
+    background-image: url("../images/Rams.jpg");
     background-size: 100px 100px;
     width:100px; 
     height:100px;
@@ -301,7 +313,7 @@ text-align: center;
     margin-top: 310px;
    */
    display: inline-block;
-    background: url("../images/Vikings.jpg");
+    background-image: url("../images/Vikings.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -313,7 +325,7 @@ text-align: center;
     margin-top: 310px;
    */
     display: inline-block;
-    background: url("../images/Saints.jpg");
+    background-image: url("../images/Saints.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -323,7 +335,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Giants.png");
+    background-image: url("../images/Giants.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -333,7 +345,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Eagles.png");
+    background-image: url("../images/Eagles.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -346,7 +358,7 @@ text-align: center;
    */
    
     display: inline-block;
-    background: url("../images/49Ers.jpg");
+    background-image: url("../images/49Ers.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -358,7 +370,7 @@ text-align: center;
     margin-top: 310px;
    */
     display: inline-block;
-    background: url("../images/Seahawks.png");
+    background-image: url("../images/Seahawks.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -369,7 +381,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Buccaneers.png");
+    background-image: url("../images/Buccaneers.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -380,7 +392,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Commanders.png");
+    background-image: url("../images/Commanders.png");
     background-size: 100px 100px;
     width:100px; 
     height:100px;
@@ -392,7 +404,7 @@ text-align: center;
     margin-top: 310px;
    */
    display: inline-block;
-    background: url("../images/Ravens.png");
+    background-image: url("../images/Ravens.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -404,7 +416,7 @@ text-align: center;
     margin-top: 310px;
    */
     display: inline-block;
-    background: url("../images/Bills.png");
+    background-image: url("../images/Bills.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -414,7 +426,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Bengals.jpg");
+    background-image: url("../images/Bengals.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -424,7 +436,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Browns.jpg");
+    background-image: url("../images/Browns.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -437,7 +449,7 @@ text-align: center;
    */
    
     display: inline-block;
-    background: url("../images/Broncos.jpg");
+    background-image: url("../images/Broncos.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -449,7 +461,7 @@ text-align: center;
     margin-top: 310px;
    */
     display: inline-block;
-    background: url("../images/Texans.jpg");
+    background-image: url("../images/Texans.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -460,7 +472,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Colts.jpg");
+    background-image: url("../images/Colts.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -471,7 +483,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Jaguars.png");
+    background-image: url("../images/Jaguars.png");
     background-size: 100px 100px;
     width:100px; 
     height:100px;
@@ -483,7 +495,7 @@ text-align: center;
     margin-top: 310px;
    */
    display: inline-block;
-    background: url("../images/Chiefs.jpg");
+    background-image: url("../images/Chiefs.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -495,7 +507,7 @@ text-align: center;
     margin-top: 310px;
    */
     display: inline-block;
-    background: url("../images/Riders.png");
+    background-image: url("../images/Riders.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -505,7 +517,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Chargers.jpg");
+    background-image: url("../images/Chargers.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -515,7 +527,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Dolphins.jpg");
+    background-image: url("../images/Dolphins.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -528,7 +540,7 @@ text-align: center;
    */
    
     display: inline-block;
-    background: url("../images/Patriots.webp");
+    background-image: url("../images/Patriots.webp");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -540,7 +552,7 @@ text-align: center;
     margin-top: 310px;
    */
     display: inline-block;
-    background: url("../images/Jets.jpg");
+    background-image: url("../images/Jets.jpg");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -551,7 +563,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Steelers.png");
+    background-image: url("../images/Steelers.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -562,7 +574,7 @@ text-align: center;
     margin-left: 1150px;
     margin-top: 310px;
    */
-    background: url("../images/Titans.jpg");
+    background-image: url("../images/Titans.jpg");
     background-size: 100px 100px;
     width:100px; 
     height:100px;
@@ -572,7 +584,7 @@ text-align: center;
 #sidebar {
 visibility: hidden; 
 position: fixed;
-width: 200px;
+width: 300px;
 height: 100%;
 background: #151719;
 transition: all 500ms linear;
