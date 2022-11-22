@@ -41,6 +41,8 @@ function AbrirMenu(){
 }
 */
 $("#equipos li").click(function() {
+    equipo2=$(this).attr('id');
+    console.log(equipo2); 
     $("#sidebar").animate({opacity: '0.0'}, "high");
     $("#sidebar").animate({opacity: '0.8'}, "slow");
     $("#sidebar").css('visibility','visible');
@@ -48,9 +50,8 @@ $("#equipos li").click(function() {
     colorequipo=$(this).css('background-image');
     colorequipo = colorequipo.replace('url(','').replace(')','').replace(/\"/gi, "");
     console.log(colorequipo);
-    $("#tituloEquipo").append("<img src="+colorequipo+" style=\"width:100px\";\"height:200px\">");
-    equipo2=$(this).attr('id');
-    console.log(equipo2); 
+    $("#tituloEquipo").append("<img src="+colorequipo+" style=\"width:100px\";\"height:200px\"><h1 style=\"float:right ; margin-right:50px\";>"+equipo2+"&nbsp;&nbsp;</h1>");
+    
 });
 
 

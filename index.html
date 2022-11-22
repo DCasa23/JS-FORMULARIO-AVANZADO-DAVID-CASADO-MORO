@@ -27,12 +27,61 @@
     </div>
     <div id="sidebar">
         <h3 id="tituloEquipo"></h3>
-        <ul>
-
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-        </ul>
+        <div class="radio">
+            <ul>
+                <li>
+                    <label class="custom-radio-checkbox">
+                        <!-- Input oculto -->
+                        <input class="custom-radio-checkbox__input" type="radio" name="numero" value="1" checked>
+                        <!-- Imagen en sustitucion -->
+                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--radio"></span>
+                        <!-- Texto -->
+                        <span class="custom-radio-checkbox__text">Comprar 1 Partido</span>
+                    </label>
+                </li>
+                <li><label class="custom-radio-checkbox">
+                        <!-- Input oculto -->
+                        <input class="custom-radio-checkbox__input" type="radio" name="numero" value="5" checked>
+                        <!-- Imagen en sustitucion -->
+                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--radio"></span>
+                        <!-- Texto -->
+                        <span class="custom-radio-checkbox__text">Comprar 5 Partidos</span>
+                    </label>
+                </li>
+                <li><label class="custom-radio-checkbox">
+                        <!-- Input oculto -->
+                        <input class="custom-radio-checkbox__input" type="radio" name="numero" value="10" checked>
+                        <!-- Imagen en sustitucion -->
+                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--radio"></span>
+                        <!-- Texto -->
+                        <span class="custom-radio-checkbox__text">Comprar 10 Partidos</span>
+                    </label>
+                </li>
+                <li><label class="custom-radio-checkbox">
+                        <!-- Input oculto -->
+                        <input class="custom-radio-checkbox__input" type="radio" name="numero" value="18" checked>
+                        <!-- Imagen en sustitucion -->
+                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--radio"></span>
+                        <!-- Texto -->
+                        <span class="custom-radio-checkbox__text">Comprar Todos los Partidos</span>
+                    </label>
+                </li>
+                <!--
+                <li><input type="radio" id="uno" name="numero" value="1">
+                    <label for="numero">Comprar 1 Partido</label>
+                </li>
+                <li><input type="radio" id="cinco" name="numero" value="1">
+                    <label for="numero">Comprar 5 Partidos</label>
+                </li>
+                <li><input type="radio" id="diez" name="numero" value="1">
+                    <label for="numero">Comprar 10 Partidos</label>
+                </li>
+                <li><input type="radio" id="todos" name="numero" value="1">
+                    <label for="numero">Comprar la Temporada</label>
+                </li>
+            -->
+            </ul>
+        </div>
     </div>
     <div id="sidebarright">
         <ul>
@@ -69,21 +118,21 @@
                     <span id="textoCorreo"></span>
                 </div>
                 <br><label for="CONTRASEÑA">Contraseña:</label><br>
-                <div id="bloque"><input type="password" id="passwordform" name="password" style="width:250px;height:20px"
-                        placeholder="" onkeyup="validarPassword()">
+                <div id="bloque"><input type="password" id="passwordform" name="password"
+                        style="width:250px;height:20px" placeholder="" onkeyup="validarPassword()">
                     <span id="textoPassword"></span>
                 </div>
                 <br><label for="FECHA">Fecha de Nacimiento:</label><br>
-                <div id="bloque"><input type="date" id="fechaform" name="fecha" style="width:250px;height:20px" placeholder=""
-                        min="1920-01-01" max="2021-12-31">
+                <div id="bloque"><input type="date" id="fechaform" name="fecha" style="width:250px;height:20px"
+                        placeholder="" min="1920-01-01" max="2021-12-31">
                     <span id="textoFecha"></span>
                 </div>
                 <br><br><input type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
             </div>
             <div id="form2">
                 <label for="DNI">DNI:</label><br>
-                <div id="bloque"><input type="text" id="dniform" name="dni" style="width:250px;height:20px" placeholder=""
-                        onkeyup="validarDNIForm()">
+                <div id="bloque"><input type="text" id="dniform" name="dni" style="width:250px;height:20px"
+                        placeholder="" onkeyup="validarDNIForm()">
                     <span id="textoDni"></span>
                 </div>
                 <br><label for="TELEFONO">Telefono:</label><br>
@@ -111,22 +160,24 @@
                         placeholder="" onkeyup="validarPaisForm()">
                     <span id="textoPais"></span>
                 </div>
-                
-                
+
+
                 <br><br><input type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
             </div>
             <div id="form3">
                 <br><br><label for="IBAN">IBAN:</label><br>
-                <div id="bloque"><input type="text" id="ibanform" name="iban" style="width:250px;height:20px" placeholder="ESXX-XXXX-XXXX-XX-XXXXXXXXXX"  onkeyup="validarIBANForm()">
+                <div id="bloque"><input type="text" id="ibanform" name="iban" style="width:250px;height:20px"
+                        placeholder="ESXX-XXXX-XXXX-XX-XXXXXXXXXX" onkeyup="validarIBANForm()">
                     <span id="textoIBAN"></span>
                 </div>
                 <br><label for="SWIFT" id="swift2">Swift</label><br>
-                <div id="bloque"><input type="text" onclick="validarSWIFTForm(this)" id="swiftform" name="swift" autocomplete="off"
-                    style="width:250px;height:20px" placeholder="Clicka aquí al introducir el IBAN" maxlength="0">
+                <div id="bloque"><input type="text" onclick="validarSWIFTForm(this)" id="swiftform" name="swift"
+                        autocomplete="off" style="width:250px;height:20px"
+                        placeholder="Clicka aquí al introducir el IBAN" maxlength="0">
                     <span id="textoSWIFT"></span>
                 </div>
-                
-                    
+
+
                 <br><br><input type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
             </div>
             <div id="form4">
@@ -142,8 +193,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Baltimore</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Ravens</span>
                                 </h3>
                             </div>
@@ -152,8 +206,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Buffalo</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Buffalo</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Bills</span>
                                 </h3>
                             </div>
@@ -162,8 +219,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Cincinatti</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Bengals</span>
                                 </h3>
                             </div>
@@ -172,8 +232,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Cleveland</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Cleveland</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Browns</span>
                                 </h3>
                             </div>
@@ -182,8 +245,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Denver</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Denver</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Broncos</span>
                                 </h3>
                             </div>
@@ -192,8 +258,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Houstons</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Houston</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Texans</span>
                                 </h3>
                             </div>
@@ -202,8 +271,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Indianapolis</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Colts</span>
                                 </h3>
                             </div>
@@ -212,8 +284,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Jacksonville</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Jacksonville</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Jaguars</span>
                                 </h3>
                             </div>
@@ -222,19 +297,25 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Kansas City</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Chiefs</span>
                                 </h3>
                             </div>
                         </li>
-                        <li id="Riders">
+                        <li id="Raiders">
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Las Vegas</span><br>
-                                    <span>Riders</span>
+                                <h3 id="textoarriba">
+                                    <span>Las Vegas</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
+                                    <span>Raiders</span>
                                 </h3>
                             </div>
                         </li>
@@ -242,8 +323,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Los Angeles</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Chargers</span>
                                 </h3>
                             </div>
@@ -252,8 +336,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Miami</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Miami</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Dolphins</span>
                                 </h3>
                             </div>
@@ -262,8 +349,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>New England</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Patriots</span>
                                 </h3>
                             </div>
@@ -272,9 +362,12 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>New York</span><br>
-                                    <span>Jets</span>
+                                <h3 id="textoarriba">
+                                    <span>New York</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
+                                    <span>Jetss</span>
                                 </h3>
                             </div>
                         </li>
@@ -282,8 +375,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Pittsburgh</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Steelers</span>
                                 </h3>
                             </div>
@@ -292,8 +388,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Tenesse</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Titans</span>
                                 </h3>
                             </div>
@@ -301,7 +400,8 @@
 
                     </ul>
                 </div>
-                <br><br><input id="botonEnviar" type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
+                <br><br><input id="botonEnviar" type="submit" style="width:250px;height:50px"
+                    placeholder="Submit"><br><br>
             </div>
             <div id="form5">
                 <div id="opciones">
@@ -316,8 +416,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Arizona</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Cardinals</span>
                                 </h3>
                             </div>
@@ -326,8 +429,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Atlanta</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Atlanta</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Falcons</span>
                                 </h3>
                             </div>
@@ -336,8 +442,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Carolina</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Panthers</span>
                                 </h3>
                             </div>
@@ -346,8 +455,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Chicago</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Chicago</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Bears</span>
                                 </h3>
                             </div>
@@ -356,8 +468,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Dallas</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Dallas</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Cowboys</span>
                                 </h3>
                             </div>
@@ -366,8 +481,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Detroits</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Detroit</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Lions</span>
                                 </h3>
                             </div>
@@ -376,8 +494,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Green Bay</span>
+                                <h3 id="textoarriba">
+                                    <span>GreenBay</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Packers</span>
                                 </h3>
                             </div>
@@ -386,8 +507,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Los Angeles</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Los Angeles</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Rams</span>
                                 </h3>
                             </div>
@@ -396,8 +520,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Minnesota</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Vikings</span>
                                 </h3>
                             </div>
@@ -406,8 +533,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>New Orleans</span><br>
+                                <h3 id="textoarriba">
+                                    <span>New Orleans</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Saints</span>
                                 </h3>
                             </div>
@@ -416,8 +546,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>New York</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Giants</span>
                                 </h3>
                             </div>
@@ -426,8 +559,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Philadelphia</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Philadelphia</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Eagles</span>
                                 </h3>
                             </div>
@@ -436,8 +572,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>SanFrancisco</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>49Ers</span>
                                 </h3>
                             </div>
@@ -446,8 +585,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
-                                    <span>Seattle</span><br>
+                                <h3 id="textoarriba">
+                                    <span>Seattle</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Seahawks</span>
                                 </h3>
                             </div>
@@ -456,8 +598,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Tampa Bay</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Buccaneers</span>
                                 </h3>
                             </div>
@@ -466,8 +611,11 @@
                             <div>
                                 <a></a>
                                 <span></span>
-                                <h3>
+                                <h3 id="textoarriba">
                                     <span>Washington</span>
+
+                                </h3>
+                                <h3 id="textoabajo">
                                     <span>Commanders</span>
                                 </h3>
                             </div>
@@ -475,9 +623,10 @@
 
                     </ul>
                 </div>
-                <br><br><input id="botonEnviar" type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
+                <br><br><input id="botonEnviar" type="submit" style="width:250px;height:50px"
+                    placeholder="Submit"><br><br>
             </div>
-           
+
 
 
 
