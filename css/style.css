@@ -163,6 +163,13 @@ ul li #textoabajo span{
     color: black; 
     border-radius: 2px;
 }
+#tituloEquipo{
+    height: 100px;
+}
+#tituloCarrito{
+    padding: 20px 20px;
+    background-color: grey;
+}
 /*#form5 ul li{
     float:left;
     width: 100px;
@@ -612,21 +619,21 @@ height: 100%;
 background: #151719;
 transition: all 500ms linear;
 }
+#sidebar #botonizq{
+    float: right;
+    margin-right: 100px;
+}
 #sidebarright {
 visibility: hidden; 
 position: fixed;
-width: 300px;
+width: 400px;
 height: 100%;
 background: #151719;
-left:84%;
+left:79.5%;
 transition: all 500ms linear;
     
 }
-/*
-#sidebar.active {
-  left: 0px;
-}
-*/
+
 #sidebar ul li {
    
   color: rgba(230, 230, 230, .9);
@@ -636,36 +643,19 @@ transition: all 500ms linear;
   text-align: center;
 }
 #sidebarright ul {
-    padding-inline-start: 10
-    px;
+    padding-inline-start: 10;
+
   }
 #sidebarright ul li {
     color: rgba(230, 230, 230, .9);
-    list-style: none;
+    list-style: decimal;
     padding-inline-start: 0px;
-    padding: 15px 100% 0px 0px;
+    padding: 15px 10px 20px 0px;
     border-bottom: 1px solid rgba(100, 100, 100, .3);
     text-align: center;
   }
-/*
-.logo {
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto; 
-}
-
-#sidebar .toggle-btn {
-  position: absolute;
-  left: 230px;
-  top: 20px;
-  cursor: pointer;
-}
-
-#sidebar .toggle-btn span {
-  display: block;
-  width: 40px;
-  text-align: center;
-  font-size: 30px;
-  border: 3px solid #000;
-}
-*/
+  #carrito{
+    height: 400px;
+    display: block;
+    overflow: auto;
+  }

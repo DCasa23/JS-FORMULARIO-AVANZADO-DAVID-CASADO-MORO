@@ -17,7 +17,10 @@ const pais = document.getElementById("paisform")
 
 let colorequipo="";
 let equipo2="";
+let liga="";
 let contador = 0;
+let lineaCompra="";
+let arrayEquipos=[];
 
 let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
@@ -42,6 +45,13 @@ function AbrirMenu(){
 */
 $("#equipos li").click(function() {
     equipo2=$(this).attr('id');
+    if($('#form4').find(this).length){
+        
+        liga="NFC";
+    }else{
+        
+        liga="AFC";
+    }
     console.log(equipo2); 
     $("#sidebar").animate({opacity: '0.0'}, "high");
     $("#sidebar").animate({opacity: '0.8'}, "slow");
@@ -50,11 +60,27 @@ $("#equipos li").click(function() {
     colorequipo=$(this).css('background-image');
     colorequipo = colorequipo.replace('url(','').replace(')','').replace(/\"/gi, "");
     console.log(colorequipo);
-    $("#tituloEquipo").append("<img src="+colorequipo+" style=\"width:100px\";\"height:200px\"><h1 style=\"float:right ; margin-right:50px\";>"+equipo2+"&nbsp;&nbsp;</h1>");
+    $("#tituloEquipo").append("<img src="+colorequipo+" style=\"width:100px\";\"height:200px\"><h1 style=\"float:right ; background-color:grey;margin-right:50px;-webkit-text-stroke: 0.2px white;color: black;\";>&nbsp;"+equipo2+"&nbsp;</h1>");
     
 });
-
-
+$("#botonizq").click(function() {
+    if(arrayEquipos.includes(equipo2)){
+        console.log("NO PUEDES PASAR");
+        console.log("contenido: "+arrayEquipos);
+    }else{
+        console.log("contenido: "+arrayEquipos);
+        console.log("DI AMIGGO");
+        arrayEquipos.push(equipo2);
+        $("#sidebarright").animate({opacity: '0.0'}, "high");
+        $("#sidebarright").animate({opacity: '0.8'}, "slow");
+        $("#sidebarright").css('visibility','visible');
+        console.log("Hello");
+        lineaCompra=($('input[name=numero]:checked').val());
+        console.log(equipo2);
+        $("#listaCarrito").append("<li>Bono Equipo: Liga "+liga+" - "+equipo2+" "+lineaCompra+ " partidos</li>"); 
+    }
+    
+});
 
 /*
 $('#equipos ul li').on('click', function() {
@@ -1035,3 +1061,4 @@ function getBICBank(entidad) {
 
     return bicMap[entidad];
 }
+
