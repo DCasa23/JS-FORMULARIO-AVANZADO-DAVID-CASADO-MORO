@@ -14,14 +14,18 @@ const direccion = document.getElementById("direccionform")
 const ciudad = document.getElementById("ciudadform")
 const cp = document.getElementById("cpform")
 const pais = document.getElementById("paisform")
+const carritoPartidos=document.getElementById("listaCarrito")
 
-let colorequipo="";
-let equipo2="";
-let liga="";
+let colorequipo = "";
+let equipo2 = "";
+let equipo3 = "";
+let liga = "";
 let contador = 0;
-let lineaCompra="";
-let arrayEquipos=[];
-
+let lineaCompra = "";
+let precioTotal = 0;
+let arrayEquipos = [];
+let arrayEquiposFiltro = [];
+let contadorbonos = 0;
 let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
 let regexDNI = /^(\d{8})([A-z])$/;
@@ -43,58 +47,109 @@ function AbrirMenu(){
     console.log(id);
 }
 */
-$("#equipos li").click(function() {
-    equipo2=$(this).attr('id');
-    if($('#form4').find(this).length){
-        
-        liga="NFC";
-    }else{
-        
-        liga="AFC";
+//Crear clase para cada bono
+
+class Bono {
+    constructor(equipo, liga, partidos) {
+        this.equipo = equipo;
+        this.liga = liga;
+        this.partidos = partidos;
+        if (partidos == "1") {
+            this.precio = 3;
+        }
+        if (partidos == "5") {
+            this.precio = 10;
+        }
+        if (partidos == "10") {
+            this.precio = 15;
+        }
+        if (partidos == "Todos los") {
+            this.precio = 24;
+        }
+
+
     }
-    console.log(equipo2); 
-    $("#sidebar").animate({opacity: '0.0'}, "high");
-    $("#sidebar").animate({opacity: '0.8'}, "slow");
-    $("#sidebar").css('visibility','visible');
+
+
+}
+
+
+$("#equipos li").click(function () {
+    equipo2 = $(this).attr('id');
+    if ($('#form4').find(this).length) {
+
+        liga = "NFC";
+    } else {
+
+        liga = "AFC";
+    }
+    console.log(equipo2);
+    $("#sidebar").animate({ opacity: '0.0' }, "high");
+    $("#sidebar").animate({ opacity: '0.8' }, "slow");
+    $("#sidebar").css('visibility', 'visible');
     $("#tituloEquipo").empty();
-    colorequipo=$(this).css('background-image');
-    colorequipo = colorequipo.replace('url(','').replace(')','').replace(/\"/gi, "");
+    colorequipo = $(this).css('background-image');
+    colorequipo = colorequipo.replace('url(', '').replace(')', '').replace(/\"/gi, "");
     console.log(colorequipo);
-    $("#tituloEquipo").append("<img src="+colorequipo+" style=\"width:100px\";\"height:200px\"><h1 style=\"float:right ; background-color:grey;margin-right:50px;-webkit-text-stroke: 0.2px white;color: black;\";>&nbsp;"+equipo2+"&nbsp;</h1>");
-    
+    $("#tituloEquipo").append("<img src=" + colorequipo + " style=\"width:100px\";\"height:200px\"><h1 style=\"float:right ; background-color:grey;margin-right:50px;-webkit-text-stroke: 0.2px white;color: black;\";>&nbsp;" + equipo2 + "&nbsp;</h1>");
+
 });
-$("#botonizq").click(function() {
-    if(arrayEquipos.includes(equipo2)){
+$("#botonizq").click(function () {
+    if (arrayEquiposFiltro.includes(equipo2)) {
         console.log("NO PUEDES PASAR");
-        console.log("contenido: "+arrayEquipos);
-    }else{
-        console.log("contenido: "+arrayEquipos);
+        console.log("contenido: " + arrayEquipos);
+    } else {
+        arrayEquiposFiltro.push(equipo2);
+        lineaCompra = ($('input[name=numero]:checked').val());
+        console.log("contenido: " + arrayEquipos);
         console.log("DI AMIGGO");
-        arrayEquipos.push(equipo2);
-        $("#sidebarright").animate({opacity: '0.0'}, "high");
-        $("#sidebarright").animate({opacity: '0.8'}, "slow");
-        $("#sidebarright").css('visibility','visible');
+        equipo3=equipo2;
+        equipo3 = new Bono(equipo2, liga, lineaCompra);
+        arrayEquipos.push(equipo3);
+
+        $("#sidebarright").animate({ opacity: '0.0' }, "high");
+        $("#sidebarright").animate({ opacity: '0.8' }, "slow");
+        $("#sidebarright").css('visibility', 'visible');
         console.log("Hello");
-        lineaCompra=($('input[name=numero]:checked').val());
+
         console.log(equipo2);
-        $("#listaCarrito").append("<li>Bono Equipo: Liga "+liga+" - "+equipo2+" "+lineaCompra+ " partidos</li>"); 
+        precioTotal = precioTotal + arrayEquipos[contadorbonos].precio;
+        $("#listaCarrito").append("<li>" + arrayEquipos[contadorbonos].liga + " - " + arrayEquipos[contadorbonos].equipo + " " + arrayEquipos[contadorbonos].partidos + " partidos:" + arrayEquipos[contadorbonos].precio + "€</li>");
+        $('#precioTotal').html("Precio Total:                               " + precioTotal + "€");
+
+        $("#carrito").animate({ scrollTop: $('#carrito')[0].scrollHeight }, 1000);
+        contadorbonos++;
     }
-    
+
 });
 
-/*
-$('#equipos ul li').on('click', function() {
-    var elmId = $("li").attr("id");
-    alert(elmId);
-  })
-  */
-function moverNFC(){
-    document.getElementById("form4").style.display="block";
-    document.getElementById("form5").style.display="none";
+$("#botonBorrar").click(function(){
+    $('#carrito li').remove();
+    precioTotal=0;
+    arrayEquipos=[];
+    arrayEquiposFiltro=[];
+    contadorbonos=0;
+    $('#precioTotal').html("Precio Total:                               " + precioTotal + "€");
+})
+$("#botonEnviar").click(function(){
+    if(precioTotal>0){
+        window.location.href = 'http://marca.com';
+    }else{
+        $("#parrafo").append("<span style='color: black;font-weight: bold;opacity:1.25;'>El carrito esta vacio, pulse comprar cuando haya elegido.</span>");
+    }
+    $('#carrito li').remove();
+    precioTotal=0;
+    $('#precioTotal').html("Precio Total:                               " + precioTotal + "€");
+})
+
+
+function moverNFC() {
+    document.getElementById("form4").style.display = "block";
+    document.getElementById("form5").style.display = "none";
 }
-function moverAFC(){
-    document.getElementById("form4").style.display="none";
-    document.getElementById("form5").style.display="block";
+function moverAFC() {
+    document.getElementById("form4").style.display = "none";
+    document.getElementById("form5").style.display = "block";
 }
 function validarName() {
     if (nombre.value.length < 5) {
@@ -406,34 +461,34 @@ function validarSWIFTForm() {
     } else {
         if (typeof getBICBank(iban.value.substring(5, 9) === "string")) {
             swift.placeholder = getBICBank(iban.value.substring(5, 9));
-            if(swift.placeholder.length==11){
-            swift.style.background = ' #3CBC8D';
-            swift.style.color = 'white';
-            console.log(typeof getBICBank(iban.value.substring(5, 9)))
-            swift.style.border = '2px solid green';
-            document.getElementById("textoSWIFT").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
-            document.getElementById("parrafo").innerHTML = "";
-            incorrectoSWIFT = false;
-            console.log("Aqui entramos: "+getBICBank(iban.value.substring(5, 9)))
-            console.log("Esto esta verde en s")
-            console.log(typeof getBICBank(iban.value.substring(5, 9)))
+            if (swift.placeholder.length == 11) {
+                swift.style.background = ' #3CBC8D';
+                swift.style.color = 'white';
+                console.log(typeof getBICBank(iban.value.substring(5, 9)))
+                swift.style.border = '2px solid green';
+                document.getElementById("textoSWIFT").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+                document.getElementById("parrafo").innerHTML = "";
+                incorrectoSWIFT = false;
+                console.log("Aqui entramos: " + getBICBank(iban.value.substring(5, 9)))
+                console.log("Esto esta verde en s")
+                console.log(typeof getBICBank(iban.value.substring(5, 9)))
 
-        }else{
-            
-            swift.style.background = '#ff99b2';
-            swift.style.border = '2px solid red';
-            document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
-            document.getElementById("textoSWIFT").innerHTML = "";
-            swift.placeholder = "IBAN INCORRECTO"
-            console.log("Esto esta rojo otra vez s")
-            console.log(getBICBank(iban.value.substring(5, 9)))
-            console.log(getBICBank(iban.value.substring(5, 9)))
-            console.log(typeof getBICBank(iban.value.substring(5, 9)))
-            incorrectoSWIFT = true
+            } else {
+
+                swift.style.background = '#ff99b2';
+                swift.style.border = '2px solid red';
+                document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
+                document.getElementById("textoSWIFT").innerHTML = "";
+                swift.placeholder = "IBAN INCORRECTO"
+                console.log("Esto esta rojo otra vez s")
+                console.log(getBICBank(iban.value.substring(5, 9)))
+                console.log(getBICBank(iban.value.substring(5, 9)))
+                console.log(typeof getBICBank(iban.value.substring(5, 9)))
+                incorrectoSWIFT = true
+            }
+
+
         }
-
-        
-    }
     }
 }
 /*function validarSWIFTForm() {
@@ -621,30 +676,30 @@ formulario.addEventListener("submit", e => {
     
     
     */
-    
+
     if ((incorrecto1 == false && contador == 0) || (incorrecto2 == false && contador == 1) || (incorrecto3 == false && contador == 2)) {
         switch (contador) {
             case 0:
-                document.getElementById("form1").style.display="none";
-                document.getElementById("form2").style.display="block";
+                document.getElementById("form1").style.display = "none";
+                document.getElementById("form2").style.display = "block";
                 contador = 1;
                 break;
             case 1:
-                document.getElementById("form2").style.display="none";
-                document.getElementById("form3").style.display="block";
+                document.getElementById("form2").style.display = "none";
+                document.getElementById("form3").style.display = "block";
                 contador = 2;
                 break;
             case 2:
-                document.getElementById("form3").style.display="none";
-                document.getElementById("form4").style.display="block";
+                document.getElementById("form3").style.display = "none";
+                document.getElementById("form4").style.display = "block";
                 document.getElementById("principal").style.padding = "0px 0px";
                 document.getElementById("principal").style.height = "750px";
                 document.getElementById("formulario").style.height = "800px";
                 contador = 3;
                 break;
             case 4:
-                document.getElementById("form5").style.display="none";
-                document.getElementById("form4").style.display="block";
+                document.getElementById("form5").style.display = "none";
+                document.getElementById("form4").style.display = "block";
                 alert(' Has enviado correctamente los datos.\n\nRecibiras un correo de confirmación en pocos minutos. ')
                 formulario.reset()
                 break;
@@ -653,12 +708,6 @@ formulario.addEventListener("submit", e => {
         console.log("TODO ES FALSO")
     }
 });
-
-function borrarTodo() {
-
-    formulario.reset();
-    swift.placeholder = "Clicka aquí al introducir el IBAN";
-}
 /*
 function validarSWIFTForm(swift) {
     if (typeof getBICBank(iban.value.substring(5, 9) === 'undefined')) {

@@ -31,17 +31,17 @@
             <ul>
 
 
-                <li><input type="radio" id="uno" name="numero" value="1">
-                    <label for="numero">Comprar 1 Partido</label>
+                <li><input type="radio" id="uno" name="numero" value="1" checked>
+                    <label for="numero">Comprar 1 Partido: 3€</label>
                 </li>
                 <li><input type="radio" id="cinco" name="numero" value="5">
-                    <label for="numero">Comprar 5 Partidos</label>
+                    <label for="numero">Comprar 5 Partidos: 10€</label>
                 </li>
                 <li><input type="radio" id="diez" name="numero" value="10">
-                    <label for="numero">Comprar 10 Partidos</label>
+                    <label for="numero">Comprar 10 Partidos: 15€</label>
                 </li>
                 <li><input type="radio" id="todos" name="numero" value="Todos los">
-                    <label for="numero">Comprar la Temporada</label>
+                    <label for="numero">Comprar la Temporada: 24€</label>
                 </li>
 
             </ul>
@@ -59,9 +59,16 @@
 
             </ul>
         </div>
+        <div><h2 id="precioTotal">Precio Total:     0€</h2>
+            
+        </div>
         <div>
             <br><br><input id="botonEnviar" type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
         </div>
+        <div>
+            <br><br><input id="botonBorrar" type="submit" style="width:250px;height:50px" placeholder="Submit" value="Borrar Carrito"><br><br>
+        </div>
+        
     </div>
 
 
