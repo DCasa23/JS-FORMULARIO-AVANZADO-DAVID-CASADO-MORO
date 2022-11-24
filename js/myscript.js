@@ -14,22 +14,27 @@ const direccion = document.getElementById("direccionform")
 const ciudad = document.getElementById("ciudadform")
 const cp = document.getElementById("cpform")
 const pais = document.getElementById("paisform")
-const carritoPartidos=document.getElementById("listaCarrito")
+const carritoPartidos = document.getElementById("listaCarrito")
 
 let colorequipo = "";
 let equipo2 = "";
 let equipo3 = "";
+let equipo8 = "";
 let liga = "";
 let contador = 0;
 let lineaCompra = "";
 let precioTotal = 0;
 let arrayEquipos = [];
+let valor = 1;
 let arrayEquiposFiltro = [];
 let contadorbonos = 0;
 let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
 let regexDNI = /^(\d{8})([A-z])$/;
 let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
+valor = Math.floor(Math.random() * 18)
+equipo8 = $("#form5 #equipos ul li:nth-child(" + valor + ")").attr('id');
+console.log("Hola: " + equipo8)
 /*
 function validarTodo(){
     validarApellidos();
@@ -103,7 +108,7 @@ $("#botonizq").click(function () {
         lineaCompra = ($('input[name=numero]:checked').val());
         console.log("contenido: " + arrayEquipos);
         console.log("DI AMIGGO");
-        equipo3=equipo2;
+        equipo3 = equipo2;
         equipo3 = new Bono(equipo2, liga, lineaCompra);
         arrayEquipos.push(equipo3);
 
@@ -123,22 +128,22 @@ $("#botonizq").click(function () {
 
 });
 
-$("#botonBorrar").click(function(){
+$("#botonBorrar").click(function () {
     $('#carrito li').remove();
-    precioTotal=0;
-    arrayEquipos=[];
-    arrayEquiposFiltro=[];
-    contadorbonos=0;
+    precioTotal = 0;
+    arrayEquipos = [];
+    arrayEquiposFiltro = [];
+    contadorbonos = 0;
     $('#precioTotal').html("Precio Total:                               " + precioTotal + "€");
 })
-$("#botonEnviar").click(function(){
-    if(precioTotal>0){
-        window.location.href = 'http://marca.com';
-    }else{
+$("#botonEnviar").click(function () {
+    if (precioTotal > 0) {
+        window.location.href = 'html/inicio.html';
+    } else {
         $("#parrafo").append("<span style='color: black;font-weight: bold;opacity:1.25;'>El carrito esta vacio, pulse comprar cuando haya elegido.</span>");
     }
     $('#carrito li').remove();
-    precioTotal=0;
+    precioTotal = 0;
     $('#precioTotal').html("Precio Total:                               " + precioTotal + "€");
 })
 
@@ -585,6 +590,17 @@ formulario.addEventListener("submit", e => {
         validarSWIFTForm();
     }
     if (incorrectoApellidos == false && incorrectoNombre == false && incorrectoPassword == false && incorrectoUsuario == false && incorrectoFecha == false && incorrectoCorreo == false) {
+        localStorage.nombre = nombre;
+        localStorage.apellidos = apellidos;
+        localStorage.password = password;
+        localStorage.usuario = usuario;
+        let nombreMemoria = localStorage.nombre;
+        let usuarioMemoria = localStorage.usuario;
+        let passwordMemoria = localStorage.password;
+        console.log("El usuario: " + usuarioMemoria);
+        console.log("La contraseña: " + passwordMemoria);
+        localStorage.setItem('fecha', fecha);
+        localStorage.setItem('correo', correo);
         incorrecto1 = false;
     }
     if (contador == 1) {
@@ -680,9 +696,21 @@ formulario.addEventListener("submit", e => {
     if ((incorrecto1 == false && contador == 0) || (incorrecto2 == false && contador == 1) || (incorrecto3 == false && contador == 2)) {
         switch (contador) {
             case 0:
+
                 document.getElementById("form1").style.display = "none";
                 document.getElementById("form2").style.display = "block";
                 contador = 1;
+                localStorage.nombre = nombre;
+                localStorage.apellidos = apellidos;
+                localStorage.password = password;
+                localStorage.usuario = usuario;
+                let nombreMemoria = localStorage.nombre;
+                let usuarioMemoria = localStorage.usuario;
+                let passwordMemoria = localStorage.password;
+                console.log("El usuario: " + usuarioMemoria);
+                console.log("La contraseña: " + passwordMemoria);
+                localStorage.setItem('fecha', fecha);
+                localStorage.setItem('correo', correo);
                 break;
             case 1:
                 document.getElementById("form2").style.display = "none";

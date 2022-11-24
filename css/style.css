@@ -113,7 +113,7 @@ body{
 text-align: center;
 }
 #form1{
-    display:none;
+    display:block;
 }
 #form2{
     
@@ -126,7 +126,7 @@ text-align: center;
 
 #form4{
     
-    display:block;
+    display:none;
     
 }
 #form5{
