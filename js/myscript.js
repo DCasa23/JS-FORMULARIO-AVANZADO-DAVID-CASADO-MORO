@@ -709,8 +709,8 @@ formulario.addEventListener("submit", e => {
                 let passwordMemoria = localStorage.password;
                 console.log("El usuario: " + usuarioMemoria);
                 console.log("La contraseña: " + passwordMemoria);
-                localStorage.setItem('fecha', fecha);
-                localStorage.setItem('correo', correo);
+                /*localStorage.setItem('fecha', fecha);
+                localStorage.setItem('correo', correo);*/
                 break;
             case 1:
                 document.getElementById("form2").style.display = "none";
