@@ -89,11 +89,12 @@ class Usuario {
         this.passwordUsuario = passwordUsuario;
 
     }
-    /*darJSON(){
-        resultado=JSON.stringify(this.Usuario);
+    darJSON(){
+        
+        var resultado=JSON.stringify(this.Usuario);
         console.log("Se metio en el metodo");
         return resultado;
-    }*/
+    }
 
 
 }
@@ -616,17 +617,24 @@ formulario.addEventListener("submit", e => {
         const myJSON=JSON.stringify(datosTotales);
         const myObj2=JSON.parse(myJSON);
         x = myObj2.nombreUsuario;
-        console.log("Nombre por JSON: "+x);/*sessionStorage.nombre = nombre;
+        
+        console.log("Nombre por JSON: "+x);
+        console.log("Usuario por JSON: "+myObj2.usuarioUsuario);
+        console.log("Passw por JSON: "+myObj2.passwordUsuario);
+        sessionStorage.setItem('usuario', myObj2.usuarioUsuario);
+        sessionStorage.setItem('password', myObj2.passwordUsuario);
+        console.log("El usuario introducido: " + sessionStorage.getItem('usuario'));
+        console.log("La contraseña introducido: " +sessionStorage.getItem('password'));
+        /*sessionStorage.nombre = nombre;
         sessionStorage.apellidos = apellidos;
         sessionStorage.password = password;
         sessionStorage.usuario = usuario;
-        let nombreMemoria = sessionStorage.nombre;
-        let usuarioMemoria = sessionStorage.usuario;
-        let passwordMemoria = sessionStorage.password;
-        console.log("El usuario: " + usuarioMemoria);
-        console.log("La contraseña: " + passwordMemoria);
+        
+        let nombreMemoria = sessionStorage.nombre;*/
+        
+        
         sessionStorage.setItem('fecha', fecha);
-        sessionStorage.setItem('correo', correo);*/
+        sessionStorage.setItem('correo', correo);
         incorrecto1 = false;
     }
     if (contador == 1) {
