@@ -38,6 +38,7 @@ let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
 valor = Math.floor(Math.random() * 18)
 equipo8 = $("#form5 #equipos ul li:nth-child(" + valor + ")").attr('id');
 console.log("Hola: " + equipo8)
+console.log("Hola: " + fecha.value)
 /*
 function validarTodo(){
     validarApellidos();
@@ -83,18 +84,14 @@ class Bono {
 
 class Usuario {
     /*resultado="";*/
-    constructor(nombreUsuario, usuarioUsuario, passwordUsuario) {
+    constructor(nombreUsuario, usuarioUsuario, passwordUsuario,fechaUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.usuarioUsuario = usuarioUsuario;
         this.passwordUsuario = passwordUsuario;
+        this.fechaUsuario = fechaUsuario;
 
     }
-    darJSON(){
-        
-        var resultado=JSON.stringify(this.Usuario);
-        console.log("Se metio en el metodo");
-        return resultado;
-    }
+    
 
 
 }
@@ -159,7 +156,7 @@ $("#botonBorrar").click(function () {
 })
 $("#botonEnviar").click(function () {
     if (precioTotal > 0) {
-        window.location.href = 'html/inicio.html';
+        window.location.href = 'html/perfil.html';
     } else {
         $("#parrafo").append("<span style='color: black;font-weight: bold;opacity:1.25;'>El carrito esta vacio, pulse comprar cuando haya elegido.</span>");
     }
@@ -613,18 +610,22 @@ formulario.addEventListener("submit", e => {
     if (incorrectoApellidos == false && incorrectoNombre == false && incorrectoPassword == false && incorrectoUsuario == false && incorrectoFecha == false && incorrectoCorreo == false) {
         console.log("Este "+apellidos.value);
         console.log("ESTE ES EL NOMBRE DEFIN: "+nombre.value);
-        datosTotales=new Usuario(nombre.value,usuario.value,password.value);
+        datosTotales=new Usuario(nombre.value,usuario.value,password.value,fecha.value,);
         const myJSON=JSON.stringify(datosTotales);
         const myObj2=JSON.parse(myJSON);
         x = myObj2.nombreUsuario;
-        
+        console.log("LA FECHA ES: "+fecha.value);
         console.log("Nombre por JSON: "+x);
         console.log("Usuario por JSON: "+myObj2.usuarioUsuario);
         console.log("Passw por JSON: "+myObj2.passwordUsuario);
+        console.log("Passw por JSON: "+myObj2.fechaUsuario);
+        sessionStorage.setItem('nombre', myObj2.nombreUsuario);
+        sessionStorage.setItem('fecha', myObj2.fechaUsuario);
         sessionStorage.setItem('usuario', myObj2.usuarioUsuario);
         sessionStorage.setItem('password', myObj2.passwordUsuario);
         console.log("El usuario introducido: " + sessionStorage.getItem('usuario'));
         console.log("La contraseña introducido: " +sessionStorage.getItem('password'));
+        console.log("La FECHA ES LA SIGUIENTE introducido: " +sessionStorage.getItem('fecha'));
         /*sessionStorage.nombre = nombre;
         sessionStorage.apellidos = apellidos;
         sessionStorage.password = password;
@@ -633,8 +634,7 @@ formulario.addEventListener("submit", e => {
         let nombreMemoria = sessionStorage.nombre;*/
         
         
-        sessionStorage.setItem('fecha', fecha);
-        sessionStorage.setItem('correo', correo);
+    
         incorrecto1 = false;
     }
     if (contador == 1) {
