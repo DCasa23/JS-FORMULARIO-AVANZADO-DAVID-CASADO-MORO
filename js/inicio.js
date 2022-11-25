@@ -1,6 +1,6 @@
-let nombreMemoria=localStorage.nombre;
-let usuarioMemoria=localStorage.usuario;
-let passwordMemoria=localStorage.password;
+let nombreMemoria=sessionStorage.nombre;
+let usuarioMemoria=sessionStorage.usuario;
+let passwordMemoria=sessionStorage.password;
 console.log("El usuario: "+usuarioMemoria);
 console.log("La contraseña: "+passwordMemoria);
 $("#BotonInicio").click((function (e) {
