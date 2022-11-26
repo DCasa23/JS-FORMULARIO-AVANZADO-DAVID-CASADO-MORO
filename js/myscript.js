@@ -1,3 +1,5 @@
+console.log("El usuario: " + localStorage.getItem('usuario'));
+console.log("La contraseña: " + localStorage.getItem('password'));
 const nombre = document.getElementById("nombreform")
 const apellidos = document.getElementById("apellidosform")
 const correo = document.getElementById("correoform")
@@ -16,13 +18,14 @@ const cp = document.getElementById("cpform")
 const pais = document.getElementById("paisform")
 const carritoPartidos = document.getElementById("listaCarrito")
 
-let x=""; 
-let resultado="";
+let x = "";
+let resultado = "";
 
 let colorequipo = "";
 let equipo2 = "";
 let equipo3 = "";
 let equipo8 = "";
+let equipo12 = "";
 let liga = "";
 let contador = 0;
 let lineaCompra = "";
@@ -36,9 +39,12 @@ let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
 let regexDNI = /^(\d{8})([A-z])$/;
 let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
 valor = Math.floor(Math.random() * 18)
-equipo8 = $("#form5 #equipos ul li:nth-child(" + valor + ")").attr('id');
+/*equipo8 = $("#form5 #equipos ul li:nth-child(" + valor + ")").attr('id');
+equipo12 = $('#'+equipo8).css('background-image');
+equipo8 = equipo12.replace('url(', '').replace(')', '').replace(/\"/gi, "");
 console.log("Hola: " + equipo8)
-console.log("Hola: " + fecha.value)
+localStorage.setItem('equipoEnemigo', equipo8);*/
+
 /*
 function validarTodo(){
     validarApellidos();
@@ -83,15 +89,25 @@ class Bono {
 }
 
 class Usuario {
-    /*resultado="";*/
-    constructor(nombreUsuario, usuarioUsuario, passwordUsuario,fechaUsuario) {
+
+    constructor(nombreUsuario, usuarioUsuario, passwordUsuario, fechaUsuario, apellidosUsuario, correoUsuario, DNIUsuario, telefonoUsuario, direccionUsuario, CPUsuario, ciudadUsuario, paisUsuario, IBANUsuario, SWIFTUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.usuarioUsuario = usuarioUsuario;
         this.passwordUsuario = passwordUsuario;
         this.fechaUsuario = fechaUsuario;
+        this.correoUsuario = correoUsuario;
+        this.apellidosUsuario = apellidosUsuario;
+        this.DNIUsuario = DNIUsuario;
+        this.telefonoUsuario = telefonoUsuario;
+        this.direccionUsuario = direccionUsuario;
+        this.CPUsuario = CPUsuario;
+        this.ciudadUsuario = ciudadUsuario;
+        this.paisUsuario = paisUsuario;
+        this.IBANUsuario = IBANUsuario;
+        this.SWIFTUsuario = SWIFTUsuario;
 
     }
-    
+
 
 
 }
@@ -113,9 +129,20 @@ $("#equipos li").click(function () {
     $("#tituloEquipo").empty();
     colorequipo = $(this).css('background-image');
     colorequipo = colorequipo.replace('url(', '').replace(')', '').replace(/\"/gi, "");
-    console.log(colorequipo);
+    localStorage.setItem('equipoFavorito', colorequipo);
     $("#tituloEquipo").append("<img src=" + colorequipo + " style=\"width:100px\";\"height:200px\"><h1 style=\"float:right ; background-color:grey;margin-right:50px;-webkit-text-stroke: 0.2px white;color: black;\";>&nbsp;" + equipo2 + "&nbsp;</h1>");
-
+    if(liga=="NFC"){
+        equipo8 = $("#form5 #equipos ul li:nth-child(" + valor + ")").attr('id');
+        console.log("ESTAS EN LA LIGA NFC")
+    }else{
+        equipo8 = $("#form4 #equipos ul li:nth-child(" + valor + ")").attr('id');
+        console.log("ESTAS EN LA LIGA AFC")
+    }
+    
+    equipo12 = $('#' + equipo8).css('background-image');
+    equipo8 = equipo12.replace('url(', '').replace(')', '').replace(/\"/gi, "");
+    console.log("Hola: " + equipo8)
+    localStorage.setItem('equipoEnemigo', equipo8);
 });
 $("#botonizq").click(function () {
     if (arrayEquiposFiltro.includes(equipo2)) {
@@ -182,7 +209,7 @@ function validarName() {
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño o esta vacio</span>";
         document.getElementById("textoNombre").innerHTML = "";
 
-        
+
         incorrectoNombre = true;
 
 
@@ -203,7 +230,7 @@ function validarApellidos() {
         apellidos.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El apellido introducido es pequeño o esta vacio</span>";
         document.getElementById("textoApellidos").innerHTML = "";
-        
+
         incorrectoApellidos = true
 
 
@@ -226,7 +253,7 @@ function validarCorreoForm() {
         correo.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El correo tiene un formato inadecuado</span>";
         document.getElementById("textoCorreo").innerHTML = "";
-        
+
         incorrectoCorreo = true
 
 
@@ -270,7 +297,7 @@ function validarTelefonoForm() {
         telefono.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El telefono tiene un formato inadecuado</span>";
         document.getElementById("textoTelefono").innerHTML = "";
-        
+
         incorrectoTelefono = true
 
 
@@ -315,7 +342,7 @@ function validarFechaForm() {
         fecha.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>La fecha indica que eres menor de edad</span>";
         document.getElementById("textoFecha").innerHTML = "";
-        
+
         incorrectoFecha = true
 
 
@@ -452,7 +479,7 @@ function validarIBANForm() {
         iban.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
         document.getElementById("textoIBAN").innerHTML = "";
-        
+
         incorrectoIBAN = true
 
 
@@ -493,7 +520,7 @@ function validarSWIFTForm() {
                 document.getElementById("parrafo").innerHTML = "";
                 incorrectoSWIFT = false;
                 console.log("Aqui entramos: " + getBICBank(iban.value.substring(5, 9)))
-                console.log("Esto esta verde en s")
+                console.log("Esto esta verde en s: " + swift.placeholder)
                 console.log(typeof getBICBank(iban.value.substring(5, 9)))
 
             } else {
@@ -608,33 +635,43 @@ formulario.addEventListener("submit", e => {
         validarSWIFTForm();
     }
     if (incorrectoApellidos == false && incorrectoNombre == false && incorrectoPassword == false && incorrectoUsuario == false && incorrectoFecha == false && incorrectoCorreo == false) {
-        console.log("Este "+apellidos.value);
-        console.log("ESTE ES EL NOMBRE DEFIN: "+nombre.value);
-        datosTotales=new Usuario(nombre.value,usuario.value,password.value,fecha.value,);
-        const myJSON=JSON.stringify(datosTotales);
-        const myObj2=JSON.parse(myJSON);
+        console.log("Este " + apellidos.value);
+        console.log("ESTE ES EL NOMBRE DEFIN: " + nombre.value);
+        datosTotales = new Usuario(nombre.value, usuario.value, password.value, fecha.value, apellidos.value, correo.value, dni.value, telefono.value, direccion.value, cp.value, ciudad.value, pais.value, iban.value, swift.placeholder);
+        const myJSON = JSON.stringify(datosTotales);
+        const myObj2 = JSON.parse(myJSON);
         x = myObj2.nombreUsuario;
-        console.log("LA FECHA ES: "+fecha.value);
-        console.log("Nombre por JSON: "+x);
-        console.log("Usuario por JSON: "+myObj2.usuarioUsuario);
-        console.log("Passw por JSON: "+myObj2.passwordUsuario);
-        console.log("Passw por JSON: "+myObj2.fechaUsuario);
-        sessionStorage.setItem('nombre', myObj2.nombreUsuario);
-        sessionStorage.setItem('fecha', myObj2.fechaUsuario);
-        sessionStorage.setItem('usuario', myObj2.usuarioUsuario);
-        sessionStorage.setItem('password', myObj2.passwordUsuario);
-        console.log("El usuario introducido: " + sessionStorage.getItem('usuario'));
-        console.log("La contraseña introducido: " +sessionStorage.getItem('password'));
-        console.log("La FECHA ES LA SIGUIENTE introducido: " +sessionStorage.getItem('fecha'));
-        /*sessionStorage.nombre = nombre;
-        sessionStorage.apellidos = apellidos;
-        sessionStorage.password = password;
-        sessionStorage.usuario = usuario;
+        console.log("LA FECHA ES: " + fecha.value);
+        console.log("Nombre por JSON: " + x);
+        console.log("Usuario por JSON: " + myObj2.usuarioUsuario);
+        console.log("Passw por JSON: " + myObj2.passwordUsuario);
+        console.log("Passw por JSON: " + myObj2.fechaUsuario);
+        localStorage.setItem('nombre', myObj2.nombreUsuario);
+        localStorage.setItem('fecha', myObj2.fechaUsuario);
+        localStorage.setItem('usuario', myObj2.usuarioUsuario);
+        localStorage.setItem('password', myObj2.passwordUsuario);
+        localStorage.setItem('apellidos', myObj2.apellidosUsuario);
+        localStorage.setItem('correo', myObj2.correoUsuario);
+        localStorage.setItem('DNI', myObj2.DNIUsuario);
+        localStorage.setItem('telefono', myObj2.telefonoUsuario);
+        localStorage.setItem('direccion', myObj2.direccionUsuario);
+        localStorage.setItem('CP', myObj2.CPUsuario);
+        localStorage.setItem('ciudad', myObj2.ciudadUsuario);
+        localStorage.setItem('pais', myObj2.paisUsuario);
+        localStorage.setItem('SWIFT', myObj2.SWIFTUsuario);
+        localStorage.setItem('IBAN', myObj2.IBANUsuario);
+        console.log("El usuario introducido: " + localStorage.getItem('usuario'));
+        console.log("La contraseña introducido: " + localStorage.getItem('password'));
+        console.log("La FECHA ES LA SIGUIENTE introducido: " + localStorage.getItem('fecha'));
+        /*localStorage.nombre = nombre;
+        localStorage.apellidos = apellidos;
+        localStorage.password = password;
+        localStorage.usuario = usuario;
         
-        let nombreMemoria = sessionStorage.nombre;*/
-        
-        
-    
+        let nombreMemoria = localStorage.nombre;*/
+
+
+
         incorrecto1 = false;
     }
     if (contador == 1) {
@@ -734,17 +771,17 @@ formulario.addEventListener("submit", e => {
                 document.getElementById("form1").style.display = "none";
                 document.getElementById("form2").style.display = "block";
                 contador = 1;
-                /*sessionStorage.nombre = nombre;
-                sessionStorage.apellidos = apellidos;
-                sessionStorage.password = password;
-                sessionStorage.usuario = usuario;
-                let nombreMemoria = sessionStorage.nombre;
-                let usuarioMemoria = sessionStorage.usuario;
-                let passwordMemoria = sessionStorage.password;
+                /*localStorage.nombre = nombre;
+                localStorage.apellidos = apellidos;
+                localStorage.password = password;
+                localStorage.usuario = usuario;
+                let nombreMemoria = localStorage.nombre;
+                let usuarioMemoria = localStorage.usuario;
+                let passwordMemoria = localStorage.password;
                 console.log("El usuario: " + usuarioMemoria);
                 console.log("La contraseña: " + passwordMemoria);
-                sessionStorage.setItem('fecha', fecha);
-                sessionStorage.setItem('correo', correo);*/
+                localStorage.setItem('fecha', fecha);
+                localStorage.setItem('correo', correo);*/
                 break;
             case 1:
                 document.getElementById("form2").style.display = "none";
@@ -758,12 +795,6 @@ formulario.addEventListener("submit", e => {
                 document.getElementById("principal").style.height = "750px";
                 document.getElementById("formulario").style.height = "800px";
                 contador = 3;
-                break;
-            case 4:
-                document.getElementById("form5").style.display = "none";
-                document.getElementById("form4").style.display = "block";
-                alert(' Has enviado correctamente los datos.\n\nRecibiras un correo de confirmación en pocos minutos. ')
-                formulario.reset()
                 break;
         }
     } else {

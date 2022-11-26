@@ -55,13 +55,31 @@ body{
    
 }
 
-
+#BotonInicio{
+    float: right;
+    margin-right: 25px;
+}
 #principal{
-    padding:30px 0px;
+    display: block;
+    padding-bottom:30px;
     background-color: rgba(250, 255, 254, 0.8);
     border: 2px solid black;
-    width: 650px;
+    width: 450px;
     margin:0px auto;
     height: 325px;
     text-align: center;
+}
+#partidos{
+    display: block;
+    padding:20px 0px;
+    background-color: rgba(250, 255, 254, 0.8);
+    border: 2px solid black;
+    width: 950px;
+    margin:0px auto;
+    height: 325px;
+    text-align: center;
+}
+#contenedor{
+    width: 950px;
+    
 }
