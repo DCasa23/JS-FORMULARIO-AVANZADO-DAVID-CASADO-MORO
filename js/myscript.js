@@ -39,30 +39,6 @@ let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
 let regexDNI = /^(\d{8})([A-z])$/;
 let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
 valor = Math.floor(Math.random() * 18)
-/*equipo8 = $("#form5 #equipos ul li:nth-child(" + valor + ")").attr('id');
-equipo12 = $('#'+equipo8).css('background-image');
-equipo8 = equipo12.replace('url(', '').replace(')', '').replace(/\"/gi, "");
-console.log("Hola: " + equipo8)
-localStorage.setItem('equipoEnemigo', equipo8);*/
-
-/*
-function validarTodo(){
-    validarApellidos();
-    validarCorreoForm();
-    validarFechaForm();
-    validarTelefonoForm();
-    validarUsuarioForm();
-    validarName();
-}
-*/
-/*
-function AbrirMenu(){
-    document.getElementById("sidebar").style.visibility="visible";
-    const id = this.getAttribute("id");
-    console.log(id);
-}
-*/
-//Crear clase para cada bono
 
 class Bono {
     constructor(equipo, liga, partidos) {
@@ -123,6 +99,7 @@ $("#equipos li").click(function () {
         liga = "AFC";
     }
     console.log(equipo2);
+    localStorage.setItem('nombreEquipo', equipo2);
     $("#sidebar").animate({ opacity: '0.0' }, "high");
     $("#sidebar").animate({ opacity: '0.8' }, "slow");
     $("#sidebar").css('visibility', 'visible');
@@ -141,18 +118,16 @@ $("#equipos li").click(function () {
     
     equipo12 = $('#' + equipo8).css('background-image');
     equipo8 = equipo12.replace('url(', '').replace(')', '').replace(/\"/gi, "");
-    console.log("Hola: " + equipo8)
     localStorage.setItem('equipoEnemigo', equipo8);
 });
 $("#botonizq").click(function () {
     if (arrayEquiposFiltro.includes(equipo2)) {
-        console.log("NO PUEDES PASAR");
-        console.log("contenido: " + arrayEquipos);
+        $("#parrafo").text("<span style='color: black;font-weight: bold;opacity:1.25;'>Ya ha introducido una compra para ese Equipo</span>");
     } else {
+        $("#parrafo").empty();
         arrayEquiposFiltro.push(equipo2);
         lineaCompra = ($('input[name=numero]:checked').val());
-        console.log("contenido: " + arrayEquipos);
-        console.log("DI AMIGGO");
+        
         equipo3 = equipo2;
         equipo3 = new Bono(equipo2, liga, lineaCompra);
         arrayEquipos.push(equipo3);
@@ -160,9 +135,7 @@ $("#botonizq").click(function () {
         $("#sidebarright").animate({ opacity: '0.0' }, "high");
         $("#sidebarright").animate({ opacity: '0.8' }, "slow");
         $("#sidebarright").css('visibility', 'visible');
-        console.log("Hello");
-
-        console.log(equipo2);
+        
         precioTotal = precioTotal + arrayEquipos[contadorbonos].precio;
         $("#listaCarrito").append("<li>" + arrayEquipos[contadorbonos].liga + " - " + arrayEquipos[contadorbonos].equipo + " " + arrayEquipos[contadorbonos].partidos + " partidos:" + arrayEquipos[contadorbonos].precio + "€</li>");
         $('#precioTotal').html("Precio Total:                               " + precioTotal + "€");
@@ -183,7 +156,8 @@ $("#botonBorrar").click(function () {
 })
 $("#botonEnviar").click(function () {
     if (precioTotal > 0) {
-        window.location.href = 'html/perfil.html';
+        localStorage.setItem('myArray', JSON.stringify(arrayEquiposFiltro));
+        window.location.href = 'perfil.html';
     } else {
         $("#parrafo").append("<span style='color: black;font-weight: bold;opacity:1.25;'>El carrito esta vacio, pulse comprar cuando haya elegido.</span>");
     }
@@ -203,7 +177,6 @@ function moverAFC() {
 }
 function validarName() {
     if (nombre.value.length < 5) {
-        console.log("Esto esta rojo");
         nombre.style.border = '2px solid red';
         nombre.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño o esta vacio</span>";
@@ -214,18 +187,16 @@ function validarName() {
 
 
     } else {
-        console.log("Esto esta verde")
         nombre.style.background = ' #3CBC8D';
         nombre.style.color = 'white';
         nombre.style.border = '2px solid green';
-        document.getElementById("textoNombre").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoNombre").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoNombre = false;
     }
 }
 function validarApellidos() {
     if (apellidos.value.length < 5) {
-        console.log("Esto esta rojo")
         apellidos.style.background = '#ff99b2';
         apellidos.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El apellido introducido es pequeño o esta vacio</span>";
@@ -235,12 +206,10 @@ function validarApellidos() {
 
 
     } else {
-        console.log("Esto esta verde")
-
         apellidos.style.background = ' #3CBC8D';
         apellidos.style.color = 'white';
         apellidos.style.border = '2px solid green';
-        document.getElementById("textoApellidos").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoApellidos").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoApellidos = false;
     }
@@ -248,7 +217,6 @@ function validarApellidos() {
 function validarCorreoForm() {
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!regexEmail.test(correoform.value)) {
-        console.log("Esto esta rojo")
         correo.style.background = '#ff99b2';
         correo.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El correo tiene un formato inadecuado</span>";
@@ -258,33 +226,31 @@ function validarCorreoForm() {
 
 
     } else {
-        console.log("Esto esta verde")
         correo.style.background = ' #3CBC8D';
         correo.style.color = 'white';
         correo.style.border = '2px solid green';
-        document.getElementById("textoCorreo").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoCorreo").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoCorreo = false;
     }
 }
 function validarPassword() {
     if (password.value.length < 5) {
-        console.log("Esto esta rojo");
         password.style.border = '2px solid red';
         password.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El password introducido es pequeño o esta vacio</span>";
         document.getElementById("textoPassword").innerHTML = "";
 
-        //warnings += ' El password esta vacio <br><br>'
+        
         incorrectoPassword = true;
 
 
     } else {
-        console.log("Esto esta verde")
+        
         password.style.background = ' #3CBC8D';
         password.style.color = 'white';
         password.style.border = '2px solid green';
-        document.getElementById("textoPassword").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoPassword").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoPassword = false;
     }
@@ -292,7 +258,7 @@ function validarPassword() {
 function validarTelefonoForm() {
     let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
     if (!regexMOVIL.test(telefonoform.value)) {
-        console.log("Esto esta rojo de telefono")
+        
         telefono.style.background = '#ff99b2';
         telefono.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El telefono tiene un formato inadecuado</span>";
@@ -302,33 +268,33 @@ function validarTelefonoForm() {
 
 
     } else {
-        console.log("Esto esta verde de telefono")
+        
         telefono.style.background = ' #3CBC8D';
         telefono.style.color = 'white';
         telefono.style.border = '2px solid green';
-        document.getElementById("textoTelefono").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoTelefono").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoTelefono = false;
     }
 }
 function validarUsuarioForm() {
     if (usuario.value.length < 5) {
-        console.log("Esto esta rojo");
+       
         usuario.style.border = '2px solid red';
         usuario.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El usuario introducido es pequeño o esta vacio</span>";
         document.getElementById("textoUsuario").innerHTML = "";
 
-        //warnings += ' El usuario esta vacio <br><br>'
+        
         incorrectoUsuario = true;
 
 
     } else {
-        console.log("Esto esta verde")
+        
         usuario.style.background = ' #3CBC8D';
         usuario.style.color = 'white';
         usuario.style.border = '2px solid green';
-        document.getElementById("textoUsuario").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoUsuario").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoUsuario = false;
     }
@@ -337,7 +303,7 @@ function validarUsuarioForm() {
 
 function validarFechaForm() {
     if (fecha.value.substring(0, 4) > 2004 || fecha.value.substring(0, 4) == "") {
-        console.log("Esto esta rojo en FECHA")
+        
         fecha.style.background = '#ff99b2';
         fecha.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>La fecha indica que eres menor de edad</span>";
@@ -347,13 +313,13 @@ function validarFechaForm() {
 
 
     } else {
-        console.log("Esto esta verde")
+        
         fecha.style.background = 'white';
-        console.log("Esto esta verde")
+        
         fecha.style.background = ' #3CBC8D';
         fecha.style.color = 'white';
         fecha.style.border = '2px solid green';
-        document.getElementById("textoFecha").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoFecha").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoFecha = false;
     }
@@ -361,7 +327,7 @@ function validarFechaForm() {
 function validarDNIForm() {
     let regexDNI = /^(\d{8})([A-z])$/;
     if (!regexDNI.test(dni.value)) {
-        console.log("Esto esta rojo");
+        
         dni.style.border = '2px solid red';
         dni.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El dni introducido es pequeño o esta vacio</span>";
@@ -372,11 +338,11 @@ function validarDNIForm() {
 
         password
     } else {
-        console.log("Esto esta verde")
+        
         dni.style.background = ' #3CBC8D';
         dni.style.color = 'white';
         dni.style.border = '2px solid green';
-        document.getElementById("textoDni").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoDni").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoDni = false;
     }
@@ -384,7 +350,7 @@ function validarDNIForm() {
 
 function validarDireccionForm() {
     if (direccion.value.length < 5) {
-        console.log("Esto esta rojo");
+        
         direccion.style.border = '2px solid red';
         direccion.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El direccion introducido es pequeño o esta vacio</span>";
@@ -395,18 +361,18 @@ function validarDireccionForm() {
 
 
     } else {
-        console.log("Esto esta verde")
+        
         direccion.style.background = ' #3CBC8D';
         direccion.style.color = 'white';
         direccion.style.border = '2px solid green';
-        document.getElementById("textoDireccion").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoDireccion").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoDireccion = false;
     }
 }
 function validarCPForm() {
     if (cp.value.length != 5) {
-        console.log("Esto esta rojo");
+        
         cp.style.border = '2px solid red';
         cp.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El cp introducido es pequeño o esta vacio</span>";
@@ -417,11 +383,11 @@ function validarCPForm() {
 
 
     } else {
-        console.log("Esto esta verde")
+        
         cp.style.background = ' #3CBC8D';
         cp.style.color = 'white';
         cp.style.border = '2px solid green';
-        document.getElementById("textoCP").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoCP").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoCP = false;
     }
@@ -429,7 +395,7 @@ function validarCPForm() {
 
 function validarCiudadForm() {
     if (ciudad.value.length <= 2) {
-        console.log("Esto esta rojo");
+        
         ciudad.style.border = '2px solid red';
         ciudad.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El ciudad introducido es pequeño o esta vacio</span>";
@@ -440,18 +406,18 @@ function validarCiudadForm() {
 
 
     } else {
-        console.log("Esto esta verde")
+        
         ciudad.style.background = ' #3CBC8D';
         ciudad.style.color = 'white';
         ciudad.style.border = '2px solid green';
-        document.getElementById("textoCiudad").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoCiudad").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoCiudad = false;
     }
 }
 function validarPaisForm() {
     if (pais.value.length < 4) {
-        console.log("Esto esta rojo");
+        
         pais.style.border = '2px solid red';
         pais.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El pais introducido es pequeño o esta vacio</span>";
@@ -462,11 +428,11 @@ function validarPaisForm() {
 
 
     } else {
-        console.log("Esto esta verde")
+        
         pais.style.background = ' #3CBC8D';
         pais.style.color = 'white';
         pais.style.border = '2px solid green';
-        document.getElementById("textoPais").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoPais").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoPais = false;
     }
@@ -474,7 +440,7 @@ function validarPaisForm() {
 function validarIBANForm() {
     let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
     if (!regexIBAN.test(iban.value)) {
-        console.log("Esto esta rojo de iban")
+        
         iban.style.background = '#ff99b2';
         iban.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
@@ -484,12 +450,12 @@ function validarIBANForm() {
 
 
     } else {
-        console.log("Esto esta verde de iban")
+        
         swift.placeholder = "CLICK AQUI PARA INTRODUCIR SWIFT"
         iban.style.background = ' #3CBC8D';
         iban.style.color = 'white';
         iban.style.border = '2px solid green';
-        document.getElementById("textoIBAN").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+        document.getElementById("textoIBAN").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
         document.getElementById("parrafo").innerHTML = "";
         incorrectoIBAN = false;
     }
@@ -501,8 +467,6 @@ function validarSWIFTForm() {
         swift.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
         document.getElementById("textoSWIFT").innerHTML = "";
-        console.log(iban.value.substring(5, 9))
-        console.log("Esto esta rojo en s")
         swift.placeholder = "IBAN INCORRECTO"
 
         incorrectoSWIFT = true
@@ -514,14 +478,10 @@ function validarSWIFTForm() {
             if (swift.placeholder.length == 11) {
                 swift.style.background = ' #3CBC8D';
                 swift.style.color = 'white';
-                console.log(typeof getBICBank(iban.value.substring(5, 9)))
                 swift.style.border = '2px solid green';
-                document.getElementById("textoSWIFT").innerHTML = "<img src=\"images/ok.png\" width=\'24px\' >";
+                document.getElementById("textoSWIFT").innerHTML = "<img src=\"../images/ok.png\" width=\'24px\' >";
                 document.getElementById("parrafo").innerHTML = "";
                 incorrectoSWIFT = false;
-                console.log("Aqui entramos: " + getBICBank(iban.value.substring(5, 9)))
-                console.log("Esto esta verde en s: " + swift.placeholder)
-                console.log(typeof getBICBank(iban.value.substring(5, 9)))
 
             } else {
 
@@ -529,85 +489,16 @@ function validarSWIFTForm() {
                 swift.style.border = '2px solid red';
                 document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
                 document.getElementById("textoSWIFT").innerHTML = "";
-                swift.placeholder = "IBAN INCORRECTO"
-                console.log("Esto esta rojo otra vez s")
-                console.log(getBICBank(iban.value.substring(5, 9)))
-                console.log(getBICBank(iban.value.substring(5, 9)))
-                console.log(typeof getBICBank(iban.value.substring(5, 9)))
-                incorrectoSWIFT = true
+                swift.placeholder = "IBAN INCORRECTO";
+                incorrectoSWIFT = true;
             }
 
 
         }
     }
 }
-/*function validarSWIFTForm() {
-    
-    if (typeof getBICBank(iban.value.substring(5, 9) === 'undefined')) {
-        
-        console.log("Esto esta rojo de swift")
-        swift.style.background = '#ff99b2';
-        swift.style.border = '2px solid red';
-        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El swift tiene un formato inadecuado</span>";
-        document.getElementById("textoSWIFT").innerHTML = "";
-        
-        incorrectoSWIFT = true
-
-
-    } else {
-        console.log("Esto esta verde de swift")
-        swift.placeholder = getBICBank(iban.value.substring(5, 9));
-        swift.style.background = ' #3CBC8D';
-        swift.style.color = 'white';
-        swift.style.border = '2px solid green';
-        document.getElementById("textoSWIFT").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
-        document.getElementById("parrafo").innerHTML = "";
-        incorrectoSWIFT = false;
-    }
-}*/
-
-
-/*
-function validarUsuarioForm() {
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!regexEmail.test(correoform.value)) {
-        console.log("Esto esta rojo")
-        correo.style.background = '#ff99b2';
-        correo.style.border = '2px solid red';
-        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño</span>";
-        document.getElementById("textoCorreo").innerHTML = "";
-        
-        incorrecto = true
-
-
-    } else {
-        console.log("Esto esta verde")
-        correo.style.background = ' #3CBC8D';
-        correo.style.color = 'white';
-        correo.style.border = '2px solid green';
-        document.getElementById("textoCorreo").innerHTML = "<img src=\"images/ok.png\" width=\'30px\' >";
-        document.getElementById("parrafo").innerHTML = "";
-        incorrecto = false;
-    }
-}
-*/
-/*
-function validarName(){
-    if (nombre.value.length < 5) {
-        console.log("Esto esta rojo")
-        nombre.style.background='black';
-        
-        incorrecto = true
-
-    
-    }else{
-        console.log("Esto esta verde")
-        nombre.style.background='white';
-    }
-    */
 
 formulario.addEventListener("submit", e => {
-    console.log("COntador: " + contador);
     incorrecto1 = true;
     incorrecto2 = true;
     incorrecto3 = true;
@@ -660,18 +551,14 @@ formulario.addEventListener("submit", e => {
         localStorage.setItem('pais', myObj2.paisUsuario);
         localStorage.setItem('SWIFT', myObj2.SWIFTUsuario);
         localStorage.setItem('IBAN', myObj2.IBANUsuario);
+       /* localStorage.setItem('myArray', JSON.stringify(arrayEquiposFiltro));*/
+        
+        
+        
         console.log("El usuario introducido: " + localStorage.getItem('usuario'));
         console.log("La contraseña introducido: " + localStorage.getItem('password'));
         console.log("La FECHA ES LA SIGUIENTE introducido: " + localStorage.getItem('fecha'));
-        /*localStorage.nombre = nombre;
-        localStorage.apellidos = apellidos;
-        localStorage.password = password;
-        localStorage.usuario = usuario;
-        
-        let nombreMemoria = localStorage.nombre;*/
-
-
-
+       
         incorrecto1 = false;
     }
     if (contador == 1) {
@@ -692,77 +579,7 @@ formulario.addEventListener("submit", e => {
     console.log("ESfecha: " + incorrectoFecha);
     console.log("ES: " + incorrecto1);
     console.log(nombre.value.length);
-    /*
-    document.getElementById("parrafo").innerHTML = "";
-    let incorrecto = false
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/
-    let regexDNI = /^(\d{8})([A-z])$/;
-    let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/
-
     
-    if (nombre.value.length < 1) {
-        
-        warnings += ' El nombre esta vacio <br><br>'
-        incorrecto = true
-
-    
-    }
-    if (apellidos.value.length < 1) {
-        
-        warnings += ' Los apellidos estan vacios <br><br>'
-        incorrecto = true
-    }
-    
-    console.log(regexEmail.test(correo.value))
-    if (!regexEmail.test(correo.value)) {
-        warnings += ' El email no es valido <br><br>'
-        incorrecto = true
-    }
-    console.log(regexMOVIL.test(telefono.value))
-    if (!regexMOVIL.test(telefono.value)) {
-        warnings += ' El Telefono no es valido, debe tener el formato:<br> XXX XXX XXX o XXX XX XX XX <br><br>'
-        incorrecto = true
-    }
-
-    console.log(regexDNI.test(dni.value))
-    if (!regexDNI.test(dni.value)) {
-        warnings += ' El DNI no es valido, debe contener: <br> 8 números y 1 letra en mayuscula <br><br>'
-        incorrecto = true
-    }
-    
-    console.log(regexIBAN.test(iban.value))
-    if (!regexIBAN.test(iban.value)) {
-        warnings += ' El IBAN no es valido, debe tener el formato:<br> ESXX XXXX XXXX XX XXXXXXXXXX <br><br>'
-        incorrecto = true
-    }
-    
-    
-    console.log(swift.placeholder)
-    if ((swift.placeholder == "undefined")||(swift.placeholder == "IBAN INCORRECTO")||(swift.placeholder == "Clicka aquí al introducir el IBAN")) {
-        
-        swift.placeholder = "IBAN INCORRECTO"
-        warnings += ' Actualice el Swift pulsando encima <br><br>'
-        incorrecto = true
-    }
-    if (usuario.value.length < 1) {
-        warnings += ' El Usuario esta vacio <br><br>'
-        incorrecto = true
-    }local
-    console.log(fecha.value.substring(0,4))
-    if(fecha.value.substring(0,4)>2004||fecha.value.substring(0,4)==""){
-        warnings += ' La fecha no es valida o es menor de 18 años<br><br>'
-        incorrecto = true
-    }
-    if (incorrecto) {
-        document.getElementById("parrafo").innerHTML = warnings;
-
-    }
-    
-    
-    
-    
-    */
 
     if ((incorrecto1 == false && contador == 0) || (incorrecto2 == false && contador == 1) || (incorrecto3 == false && contador == 2)) {
         switch (contador) {
@@ -771,17 +588,6 @@ formulario.addEventListener("submit", e => {
                 document.getElementById("form1").style.display = "none";
                 document.getElementById("form2").style.display = "block";
                 contador = 1;
-                /*localStorage.nombre = nombre;
-                localStorage.apellidos = apellidos;
-                localStorage.password = password;
-                localStorage.usuario = usuario;
-                let nombreMemoria = localStorage.nombre;
-                let usuarioMemoria = localStorage.usuario;
-                let passwordMemoria = localStorage.password;
-                console.log("El usuario: " + usuarioMemoria);
-                console.log("La contraseña: " + passwordMemoria);
-                localStorage.setItem('fecha', fecha);
-                localStorage.setItem('correo', correo);*/
                 break;
             case 1:
                 document.getElementById("form2").style.display = "none";
@@ -801,60 +607,8 @@ formulario.addEventListener("submit", e => {
         console.log("TODO ES FALSO")
     }
 });
-/*
-function validarSWIFTForm(swift) {
-    if (typeof getBICBank(iban.value.substring(5, 9) === 'undefined')) {
-        swift.placeholder = "IBAN INCORRECTO"
-        iban.style.background = 'red';
-    } else {
-        swift.placeholder = getBICBank(iban.value.substring(5, 9));
-        iban.style.background = 'white';
-    }
-}
-*/
-/*
-function validarNombre(nombre) {
-    if (nombre.value.length < 1) {
-        nombre.style.background = 'red';
-    }
-}
-function validarApellido(apellidos) {
-    if (apellidos.value.length < 1) {
-        apellidos.style.background = 'red';
-    }
-}
-function validarCorreo(correo) {
-    if (!regexEmail.test(correo.value)) {
-        correo.style.background = 'red';
-    }
-}
-function validarTelefono(telefono) {
-    if (!regexMOVIL.test(telefono.value)) {
-        telefono.style.background = 'red';
-    }
-}
-function validarDNI(dni) {
-    if (!regexDNI.test(dni.value)) {
-        dni.style.background = 'red';
-    }
-}
-function validarIBAN(iban) {
-    if (!regexIBAN.test(iban.value)) {
-        iban.style.background = 'red';
-    }
-}
 
-function validarUsuario(usuario) {
-    if (usuario.value.length < 1) {
-        usuario.style.background = 'red';
-    }
-}
-function validarFecha(fecha) {
-    if (fecha.value.substring(0, 4) > 2004 || fecha.value.substring(0, 4) == "") {
-        fecha.style.background = 'red';
-    }
-}
-*/
+
 
 function getBICBank(entidad) {
     console.log("ha ENTRADO");

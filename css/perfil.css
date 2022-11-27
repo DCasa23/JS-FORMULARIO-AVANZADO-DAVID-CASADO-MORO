@@ -1,85 +1,169 @@
-body{
+body {
     margin: 0 auto;
     background-image: url(../images/fondo.jfif);
-    background-repeat:no-repeat;background-size: 100% 100%;background-attachment:fixed;background-blend-mode: lighten;background-color: rgba(163, 163, 159, 0.8);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-blend-mode: lighten;
+    background-color: rgba(163, 163, 159, 0.8);
 }
 
-.cabecera{
+.cabecera {
     min-height: 150px;
     padding-top: 0;
 }
-.cabecera h1{
-    
+
+.cabecera h1 {
+
     margin: auto 0;
     padding-right: 0px;
     padding-top: 2%;
     text-align: center;
-    margin-right:5%;
-    
-    
+    margin-right: 5%;
+
+
     text-align: center;
 }
-.cabecera h1 span{
-    
-    background-color: rgba(6,57,112,0.9);
+
+.cabecera h1 span {
+
+    background-color: rgba(6, 57, 112, 0.9);
     padding-top: 30px;
     padding: 15px;
     text-align: center;
-    margin:0 auto;
-    
-    
+    margin: 0 auto;
+
+
     text-align: center;
 }
-.cabecera p{
+
+.cabecera p {
     padding-right: 0;
     padding-top: 15px;
     text-align: center;
-    margin:0 auto;
-    
+    margin: 0 auto;
+
     margin-top: 25px;
     text-align: center;
 }
-.cabecera p span{
-    background-color: rgba(6,57,112,0.9);
 
-    
+.cabecera p span {
+    background-color: rgba(6, 57, 112, 0.9);
+
+
 }
-#iconoizquierda{
-    
-    float:left;
+
+#iconoizquierda {
+
+    float: left;
     margin-top: -15px;
     margin: 0 auto;
-    
-    width:350px; 
-    height:100px;
-   
+
+    width: 350px;
+    height: 100px;
+
 }
 
-#BotonInicio{
+#BotonInicio {
     float: right;
     margin-right: 25px;
 }
-#principal{
+
+#principal {
     display: block;
-    padding-bottom:30px;
+    padding-bottom: 30px;
     background-color: rgba(250, 255, 254, 0.8);
     border: 2px solid black;
     width: 450px;
-    margin:0px auto;
+    margin: 0px auto;
     height: 325px;
     text-align: center;
 }
-#partidos{
+
+#principal ol li {
+    text-align: left;
+}
+
+#partidos {
     display: block;
-    padding:20px 0px;
+    padding: 20px 0px;
     background-color: rgba(250, 255, 254, 0.8);
     border: 2px solid black;
     width: 950px;
-    margin:0px auto;
+    margin: 0px auto;
     height: 325px;
     text-align: center;
 }
-#contenedor{
+
+#contenedor {
     width: 950px;
-    
+
 }
+
+#BotonPartidos {
+    display: block;
+    margin: 0px auto;
+}
+
+
+#sidebar {
+    text-align: center;
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background:  rgba(250, 255, 254, 0.4);
+    transition: all 500ms linear;
+}
+
+#sidebar #botonizq {
+    float: right;
+    margin-right: 100px;
+}
+
+
+#sidebar ul li {
+
+    color: rgba(230, 230, 230, .9);
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(100, 100, 100, .3);
+    text-align: center;
+}
+
+
+#sidebarright {
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background: #151719;
+    left:79.3%;
+    transition: all 500ms linear;
+        
+    }
+    #sidebarright ul {
+        padding-inline-start: 10;
+    
+      }
+    #sidebarright ul li {
+        color: rgba(230, 230, 230, .9);
+        list-style: decimal;
+        padding-inline-start: 0px;
+        padding: 15px 10px 20px 0px;
+        border-bottom: 1px solid rgba(100, 100, 100, .3);
+        text-align: center;
+      }
+      #carrito{
+        height: 400px;
+        display: block;
+        overflow: auto;
+      }
+    div #precioTotal{
+        background-color: grey;
+    }  
+    #precioTotal{
+        padding: 0px 10px;
+        margin-left: 20px;
+        float:right;
+        
+    }
+    

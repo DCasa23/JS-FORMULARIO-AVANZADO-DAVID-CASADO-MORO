@@ -12,7 +12,7 @@ $("#BotonInicio").click((function (e) {
     $("#mensajeCrear").show();
     $("#mensajeCrear").animate({right: '75%'});
     }else{
-        $("#parrafo").append("Kebab");
+        window.location.href = 'html/perfil.html';
     }}))
 $("#botonCrear").click(function() {
     window.location.href = 'html/crear.html';
