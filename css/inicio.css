@@ -9,6 +9,9 @@ body{
     min-height: 150px;
     padding-top: 0;
 }
+
+/*Cabecera y contenido*/
+
 .cabecera h1{
     
     margin: auto 0;
@@ -56,6 +59,7 @@ body{
    
 }
 
+/*Principal y ventana emergente*/
 
 #principal{
     padding:30px 0px;

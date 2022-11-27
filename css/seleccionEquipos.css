@@ -1,3 +1,4 @@
+/*Equipos AFC y NFC*/
 
 #form4{
     
@@ -52,14 +53,14 @@ ul li #textoabajo span{
     color: black; 
     border-radius: 2px;
 }
+
+/*Barra lateral izquierda*/
+
 #tituloEquipo{
     height: 100px;
     background-color: grey;
 }
-#tituloCarrito{
-    padding: 20px 20px;
-    background-color: grey;
-}
+
 
 #opciones ul li{
     line-height: 30px;
@@ -73,12 +74,7 @@ ul li #textoabajo span{
     margin: 5px;
     margin-bottom: 25px;
 }
-#equipos{
-    margin-bottom: 30px;
-}
-#botonEnviar,#botonBorrar{
-    margin: 0px 50px;
-}
+
 
 #sidebar {
 font-family: 'Varela Round';    
@@ -93,6 +89,18 @@ transition: all 500ms linear;
     float: right;
     margin-right: 100px;
 }
+
+#sidebar ul li {
+   
+    color: rgba(230, 230, 230, .9);
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(100, 100, 100, .3);
+    text-align: center;
+  }
+
+/*Barra lateral derecha*/
+
 #sidebarright {
 font-family: 'Varela Round'; 
 display:none;
@@ -105,14 +113,7 @@ transition: all 500ms linear;
     
 }
 
-#sidebar ul li {
-   
-  color: rgba(230, 230, 230, .9);
-  list-style: none;
-  padding: 15px 10px;
-  border-bottom: 1px solid rgba(100, 100, 100, .3);
-  text-align: center;
-}
+
 #sidebarright ul {
     padding-inline-start: 10;
 
@@ -138,4 +139,15 @@ div #precioTotal{
     margin-left: 20px;
     float:right;
     
+}
+#equipos{
+    margin-bottom: 30px;
+}
+#botonEnviar,#botonBorrar{
+    margin: 0px 50px;
+}
+
+#tituloCarrito{
+    padding: 20px 20px;
+    background-color: grey;
 }
