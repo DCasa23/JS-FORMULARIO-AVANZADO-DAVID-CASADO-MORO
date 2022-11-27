@@ -1,74 +1,81 @@
 /*Equipos AFC y NFC*/
 
-#form4{
-    
-    display:none;
-    
+#form4 {
+
+    display: none;
+
 }
-#form5{
-    
-    display:none;
-    
+
+#form5 {
+
+    display: none;
+
 }
-#opciones{
-    margin:30px 0px;
+
+#opciones {
+    margin: 30px 0px;
 }
-#form4 ul li{
-    float:left;
+
+#form4 ul li {
+    float: left;
     width: 100px;
-    height:100px;
+    height: 100px;
     background-color: rgb(64, 150, 121);
-    list-style:none;
+    list-style: none;
     border: 1px solid grey;
     border-radius: 15px;
     margin: 5px;
 }
-#form5 ul li{
-    float:left;
+
+#form5 ul li {
+    float: left;
     width: 100px;
-    height:100px;
+    height: 100px;
     background-color: rgb(64, 150, 121);
-    list-style:none;
+    list-style: none;
     border: 1px solid grey;
     border-radius: 15px;
     margin: 5px;
 }
-ul li h3{
+
+ul li h3 {
     margin-block-start: 0;
     margin-block-end: 0;
 }
-ul li #textoarriba span{
+
+ul li #textoarriba span {
     background-color: rgba(250, 255, 254, 0.8);
     line-height: 0px;
     font-size: 17px;
     -webkit-text-stroke: 0.2px white;
     color: black;
-    border-radius: 2px; 
+    border-radius: 2px;
 }
-ul li #textoabajo span{
+
+ul li #textoabajo span {
     background-color: rgba(250, 255, 254, 0.8);
     line-height: 130px;
     font-size: 17px;
     -webkit-text-stroke: 0.2px white;
-    color: black; 
+    color: black;
     border-radius: 2px;
 }
 
 /*Barra lateral izquierda*/
 
-#tituloEquipo{
+#tituloEquipo {
     height: 100px;
     background-color: grey;
 }
 
 
-#opciones ul li{
+#opciones ul li {
     line-height: 30px;
-    float:left;
+    float: left;
     width: 200px;
-    height:30px;
+    height: 30px;
     background-color: rgb(64, 150, 121);
-    list-style:none;
+    list-style: none;
     border: 1px solid grey;
     border-radius: 15px;
     margin: 5px;
@@ -77,47 +84,49 @@ ul li #textoabajo span{
 
 
 #sidebar {
-font-family: 'Varela Round';    
-display:none;
-position: fixed;
-width: 400px;
-height: 100%;
-background: #151719;
-transition: all 500ms linear;
+    font-family: 'Varela Round';
+    display: none;
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background: #151719;
+    transition: all 500ms linear;
 }
-#sidebar #botonizq{
+
+#sidebar #botonizq {
     float: right;
     margin-right: 100px;
 }
 
 #sidebar ul li {
-   
+
     color: rgba(230, 230, 230, .9);
     list-style: none;
     padding: 15px 10px;
     border-bottom: 1px solid rgba(100, 100, 100, .3);
     text-align: center;
-  }
+}
 
 /*Barra lateral derecha*/
 
 #sidebarright {
-font-family: 'Varela Round'; 
-display:none;
-position: fixed;
-width: 400px;
-height: 100%;
-background: #151719;
-left:79.3%;
-transition: all 500ms linear;
-    
+    font-family: 'Varela Round';
+    display: none;
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background: #151719;
+    left: 79.3%;
+    transition: all 500ms linear;
+
 }
 
 
 #sidebarright ul {
     padding-inline-start: 10;
 
-  }
+}
+
 #sidebarright ul li {
     color: rgba(230, 230, 230, .9);
     list-style: decimal;
@@ -125,29 +134,35 @@ transition: all 500ms linear;
     padding: 15px 10px 20px 0px;
     border-bottom: 1px solid rgba(100, 100, 100, .3);
     text-align: center;
-  }
-#carrito{
+}
+
+#carrito {
     height: 400px;
     display: block;
     overflow: auto;
-  }
-div #precioTotal{
+}
+
+div #precioTotal {
     background-color: grey;
-}  
-#precioTotal{
+}
+
+#precioTotal {
     padding: 0px 10px;
     margin-left: 20px;
-    float:right;
-    
+    float: right;
+
 }
-#equipos{
+
+#equipos {
     margin-bottom: 30px;
 }
-#botonEnviar,#botonBorrar{
+
+#botonEnviar,
+#botonBorrar {
     margin: 0px 50px;
 }
 
-#tituloCarrito{
+#tituloCarrito {
     padding: 20px 20px;
     background-color: grey;
 }
