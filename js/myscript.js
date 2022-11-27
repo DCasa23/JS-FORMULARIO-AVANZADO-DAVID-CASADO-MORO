@@ -17,6 +17,7 @@ const ciudad = document.getElementById("ciudadform")
 const cp = document.getElementById("cpform")
 const pais = document.getElementById("paisform")
 const carritoPartidos = document.getElementById("listaCarrito")
+const condiciones=document.getElementById("condiciones")
 
 let x = "";
 let resultado = "";
@@ -99,43 +100,47 @@ $("#equipos li").click(function () {
         liga = "AFC";
     }
     console.log(equipo2);
-    localStorage.setItem('nombreEquipo', equipo2);
+    
     $("#sidebar").animate({ opacity: '0.0' }, "high");
     $("#sidebar").animate({ opacity: '0.8' }, "slow");
-    $("#sidebar").css('visibility', 'visible');
+    $("#sidebar").css('display', 'block');
+    $("#sidebarright").css('display', 'block');
     $("#tituloEquipo").empty();
     colorequipo = $(this).css('background-image');
     colorequipo = colorequipo.replace('url(', '').replace(')', '').replace(/\"/gi, "");
-    localStorage.setItem('equipoFavorito', colorequipo);
+    
     $("#tituloEquipo").append("<img src=" + colorequipo + " style=\"width:100px\";\"height:200px\"><h1 style=\"float:right ; background-color:grey;margin-right:50px;-webkit-text-stroke: 0.2px white;color: black;\";>&nbsp;" + equipo2 + "&nbsp;</h1>");
-    if(liga=="NFC"){
+    if (liga == "NFC") {
         equipo8 = $("#form5 #equipos ul li:nth-child(" + valor + ")").attr('id');
         console.log("ESTAS EN LA LIGA NFC")
-    }else{
+    } else {
         equipo8 = $("#form4 #equipos ul li:nth-child(" + valor + ")").attr('id');
         console.log("ESTAS EN LA LIGA AFC")
     }
-    
+
     equipo12 = $('#' + equipo8).css('background-image');
     equipo8 = equipo12.replace('url(', '').replace(')', '').replace(/\"/gi, "");
-    localStorage.setItem('equipoEnemigo', equipo8);
+    
 });
 $("#botonizq").click(function () {
     if (arrayEquiposFiltro.includes(equipo2)) {
-        $("#parrafo").text("<span style='color: black;font-weight: bold;opacity:1.25;'>Ya ha introducido una compra para ese Equipo</span>");
+        $("#parrafo").text("Ya ha introducido una compra para ese Equipo");
     } else {
+        localStorage.setItem('equipoFavorito', colorequipo);
+        localStorage.setItem('equipoEnemigo', equipo8);
+        localStorage.setItem('nombreEquipo', equipo2);
         $("#parrafo").empty();
         arrayEquiposFiltro.push(equipo2);
         lineaCompra = ($('input[name=numero]:checked').val());
-        
+
         equipo3 = equipo2;
         equipo3 = new Bono(equipo2, liga, lineaCompra);
         arrayEquipos.push(equipo3);
 
         $("#sidebarright").animate({ opacity: '0.0' }, "high");
         $("#sidebarright").animate({ opacity: '0.8' }, "slow");
-        $("#sidebarright").css('visibility', 'visible');
         
+
         precioTotal = precioTotal + arrayEquipos[contadorbonos].precio;
         $("#listaCarrito").append("<li>" + arrayEquipos[contadorbonos].liga + " - " + arrayEquipos[contadorbonos].equipo + " " + arrayEquipos[contadorbonos].partidos + " partidos:" + arrayEquipos[contadorbonos].precio + "€</li>");
         $('#precioTotal').html("Precio Total:                               " + precioTotal + "€");
@@ -241,12 +246,12 @@ function validarPassword() {
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El password introducido es pequeño o esta vacio</span>";
         document.getElementById("textoPassword").innerHTML = "";
 
-        
+
         incorrectoPassword = true;
 
 
     } else {
-        
+
         password.style.background = ' #3CBC8D';
         password.style.color = 'white';
         password.style.border = '2px solid green';
@@ -258,7 +263,7 @@ function validarPassword() {
 function validarTelefonoForm() {
     let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
     if (!regexMOVIL.test(telefonoform.value)) {
-        
+
         telefono.style.background = '#ff99b2';
         telefono.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El telefono tiene un formato inadecuado</span>";
@@ -268,7 +273,7 @@ function validarTelefonoForm() {
 
 
     } else {
-        
+
         telefono.style.background = ' #3CBC8D';
         telefono.style.color = 'white';
         telefono.style.border = '2px solid green';
@@ -279,18 +284,18 @@ function validarTelefonoForm() {
 }
 function validarUsuarioForm() {
     if (usuario.value.length < 5) {
-       
+
         usuario.style.border = '2px solid red';
         usuario.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El usuario introducido es pequeño o esta vacio</span>";
         document.getElementById("textoUsuario").innerHTML = "";
 
-        
+
         incorrectoUsuario = true;
 
 
     } else {
-        
+
         usuario.style.background = ' #3CBC8D';
         usuario.style.color = 'white';
         usuario.style.border = '2px solid green';
@@ -303,7 +308,7 @@ function validarUsuarioForm() {
 
 function validarFechaForm() {
     if (fecha.value.substring(0, 4) > 2004 || fecha.value.substring(0, 4) == "") {
-        
+
         fecha.style.background = '#ff99b2';
         fecha.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>La fecha indica que eres menor de edad</span>";
@@ -313,9 +318,9 @@ function validarFechaForm() {
 
 
     } else {
-        
+
         fecha.style.background = 'white';
-        
+
         fecha.style.background = ' #3CBC8D';
         fecha.style.color = 'white';
         fecha.style.border = '2px solid green';
@@ -327,7 +332,7 @@ function validarFechaForm() {
 function validarDNIForm() {
     let regexDNI = /^(\d{8})([A-z])$/;
     if (!regexDNI.test(dni.value)) {
-        
+
         dni.style.border = '2px solid red';
         dni.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El dni introducido es pequeño o esta vacio</span>";
@@ -338,7 +343,7 @@ function validarDNIForm() {
 
         password
     } else {
-        
+
         dni.style.background = ' #3CBC8D';
         dni.style.color = 'white';
         dni.style.border = '2px solid green';
@@ -350,7 +355,7 @@ function validarDNIForm() {
 
 function validarDireccionForm() {
     if (direccion.value.length < 5) {
-        
+
         direccion.style.border = '2px solid red';
         direccion.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El direccion introducido es pequeño o esta vacio</span>";
@@ -361,7 +366,7 @@ function validarDireccionForm() {
 
 
     } else {
-        
+
         direccion.style.background = ' #3CBC8D';
         direccion.style.color = 'white';
         direccion.style.border = '2px solid green';
@@ -372,7 +377,7 @@ function validarDireccionForm() {
 }
 function validarCPForm() {
     if (cp.value.length != 5) {
-        
+
         cp.style.border = '2px solid red';
         cp.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El cp introducido es pequeño o esta vacio</span>";
@@ -383,7 +388,7 @@ function validarCPForm() {
 
 
     } else {
-        
+
         cp.style.background = ' #3CBC8D';
         cp.style.color = 'white';
         cp.style.border = '2px solid green';
@@ -395,7 +400,7 @@ function validarCPForm() {
 
 function validarCiudadForm() {
     if (ciudad.value.length <= 2) {
-        
+
         ciudad.style.border = '2px solid red';
         ciudad.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El ciudad introducido es pequeño o esta vacio</span>";
@@ -406,7 +411,7 @@ function validarCiudadForm() {
 
 
     } else {
-        
+
         ciudad.style.background = ' #3CBC8D';
         ciudad.style.color = 'white';
         ciudad.style.border = '2px solid green';
@@ -417,7 +422,7 @@ function validarCiudadForm() {
 }
 function validarPaisForm() {
     if (pais.value.length < 4) {
-        
+
         pais.style.border = '2px solid red';
         pais.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El pais introducido es pequeño o esta vacio</span>";
@@ -428,7 +433,7 @@ function validarPaisForm() {
 
 
     } else {
-        
+
         pais.style.background = ' #3CBC8D';
         pais.style.color = 'white';
         pais.style.border = '2px solid green';
@@ -440,7 +445,7 @@ function validarPaisForm() {
 function validarIBANForm() {
     let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
     if (!regexIBAN.test(iban.value)) {
-        
+
         iban.style.background = '#ff99b2';
         iban.style.border = '2px solid red';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El iban tiene un formato inadecuado</span>";
@@ -450,7 +455,7 @@ function validarIBANForm() {
 
 
     } else {
-        
+
         swift.placeholder = "CLICK AQUI PARA INTRODUCIR SWIFT"
         iban.style.background = ' #3CBC8D';
         iban.style.color = 'white';
@@ -497,6 +502,30 @@ function validarSWIFTForm() {
         }
     }
 }
+function validarCondiciones() {
+    console.log("HAS ENTRADO Y EL VALOR de ES :"+condiciones.checked)
+    if (condiciones.checked == true) {
+        
+        console.log("BIEEEEEnHAS ENTRADO Y EL VALOR de ES :"+condiciones.value)
+        
+        document.getElementById("parrafo").innerHTML = "";
+        incorrectoCondiciones = false;
+
+    } else {
+
+        console.log("NO HAS ENTRADO Y EL VALOR de ES :"+condiciones.checked)
+        
+        document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>Tienes que Aceptar las condiciones para acceder</span>";
+        document.getElementById("textoPais").innerHTML = "";
+
+        
+        incorrectoCondiciones = true;
+
+        /*
+        
+        */
+    }
+}
 
 formulario.addEventListener("submit", e => {
     incorrecto1 = true;
@@ -524,6 +553,7 @@ formulario.addEventListener("submit", e => {
     if (contador == 2) {
         validarIBANForm();
         validarSWIFTForm();
+        validarCondiciones();
     }
     if (incorrectoApellidos == false && incorrectoNombre == false && incorrectoPassword == false && incorrectoUsuario == false && incorrectoFecha == false && incorrectoCorreo == false) {
         console.log("Este " + apellidos.value);
@@ -551,14 +581,14 @@ formulario.addEventListener("submit", e => {
         localStorage.setItem('pais', myObj2.paisUsuario);
         localStorage.setItem('SWIFT', myObj2.SWIFTUsuario);
         localStorage.setItem('IBAN', myObj2.IBANUsuario);
-       /* localStorage.setItem('myArray', JSON.stringify(arrayEquiposFiltro));*/
-        
-        
-        
+        /* localStorage.setItem('myArray', JSON.stringify(arrayEquiposFiltro));*/
+
+
+
         console.log("El usuario introducido: " + localStorage.getItem('usuario'));
         console.log("La contraseña introducido: " + localStorage.getItem('password'));
         console.log("La FECHA ES LA SIGUIENTE introducido: " + localStorage.getItem('fecha'));
-       
+
         incorrecto1 = false;
     }
     if (contador == 1) {
@@ -567,7 +597,7 @@ formulario.addEventListener("submit", e => {
         }
     }
     if (contador == 2) {
-        if (incorrectoSWIFT == false && incorrectoIBAN == false) {
+        if (incorrectoSWIFT == false && incorrectoIBAN == false && incorrectoCondiciones==false) {
             incorrecto3 = false;
         }
     }
@@ -579,27 +609,83 @@ formulario.addEventListener("submit", e => {
     console.log("ESfecha: " + incorrectoFecha);
     console.log("ES: " + incorrecto1);
     console.log(nombre.value.length);
-    
+
 
     if ((incorrecto1 == false && contador == 0) || (incorrecto2 == false && contador == 1) || (incorrecto3 == false && contador == 2)) {
         switch (contador) {
             case 0:
-
+                $('#contenedorPelota').animate({ left: '400px' });
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota2.png" width="100px">');
+                }, 50);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota.webp" width="100px">');
+                }, 100);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota2.png" width="100px">');
+                }, 150);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota.webp" width="100px">');
+                }, 200);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota2.png" width="100px">');
+                }, 250);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota.webp" width="100px">');
+                }, 300);
                 document.getElementById("form1").style.display = "none";
                 document.getElementById("form2").style.display = "block";
                 contador = 1;
                 break;
             case 1:
+                $('#contenedorPelota').animate({ left: '800px' });
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota2.png" width="100px">');
+                }, 50);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota.webp" width="100px">');
+                }, 100);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota2.png" width="100px">');
+                }, 150);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota.webp" width="100px">');
+                }, 200);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota2.png" width="100px">');
+                }, 250);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota.webp" width="100px">');
+                }, 300);
                 document.getElementById("form2").style.display = "none";
                 document.getElementById("form3").style.display = "block";
                 contador = 2;
                 break;
             case 2:
+                $('#contenedorPelota').animate({ left: '1200px' });
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota2.png" width="100px">');
+                }, 50);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota.webp" width="100px">');
+                }, 100);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota2.png" width="100px">');
+                }, 150);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota.webp" width="100px">');
+                }, 200);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota2.png" width="100px">');
+                }, 250);
+                setTimeout(function () {
+                    $('#pelotabotando').replaceWith('<img id="pelotabotando" src="../images/pelota.webp" width="100px">');
+                }, 300);
                 document.getElementById("form3").style.display = "none";
                 document.getElementById("form4").style.display = "block";
                 document.getElementById("principal").style.padding = "0px 0px";
-                document.getElementById("principal").style.height = "750px";
-                document.getElementById("formulario").style.height = "800px";
+                document.getElementById("principal").style.height = "620px";
+                document.getElementById("formulario").style.height = "670px";
                 contador = 3;
                 break;
         }
@@ -607,7 +693,40 @@ formulario.addEventListener("submit", e => {
         console.log("TODO ES FALSO")
     }
 });
-
+$("#botonAtras0").click(function () {
+    window.location.href = '../inicio.html';
+})
+$("#botonAtras1").click(function () {
+    document.getElementById("form2").style.display = "none";
+    document.getElementById("form1").style.display = "block";
+    contador = 0;
+})
+$("#botonAtras2").click(function () {
+    document.getElementById("form2").style.display = "block";
+    document.getElementById("form3").style.display = "none";
+    contador = 1;
+})
+$("#botonAtras3").click(function () {
+    document.getElementById("sidebar").style.display = "none";
+    document.getElementById("sidebarright").style.display = "none";
+    document.getElementById("form4").style.display = "none";
+    document.getElementById("form5").style.display = "none";
+    document.getElementById("form3").style.display = "block";
+    document.getElementById("principal").style.padding = "30px 0px";
+    document.getElementById("principal").style.height = "560px";
+    document.getElementById("formulario").style.height = "80%";
+    contador = 2;
+})
+$("#botonAtras4").click(function () {
+    document.getElementById("sidebar").style.display = "none";
+    document.getElementById("sidebarright").style.display = "none";
+    document.getElementById("form5").style.display = "none";
+    document.getElementById("form3").style.display = "block";
+    document.getElementById("principal").style.padding = "30px 0px";
+    document.getElementById("principal").style.height = "560px";
+    document.getElementById("formulario").style.height = "80%";
+    contador = 2;
+})
 
 
 function getBICBank(entidad) {

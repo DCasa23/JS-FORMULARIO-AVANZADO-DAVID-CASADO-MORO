@@ -135,7 +135,7 @@ body {
     position: fixed;
     width: 400px;
     height: 100%;
-    background: #151719;
+    background: rgba(21, 23, 25, .5);
     left:79.3%;
     transition: all 500ms linear;
         
@@ -149,7 +149,7 @@ body {
         list-style: decimal;
         padding-inline-start: 0px;
         padding: 15px 10px 20px 0px;
-        border-bottom: 1px solid rgba(100, 100, 100, .3);
+        border-bottom: 1px solid #151719;
         text-align: center;
       }
       #carrito{
@@ -160,10 +160,23 @@ body {
     div #precioTotal{
         background-color: grey;
     }  
-    #precioTotal{
-        padding: 0px 10px;
-        margin-left: 20px;
-        float:right;
+    #fotoAzar{
+        margin-left:50px
+
         
     }
-    
+    #tituloEquipos{
+        text-align: center;
+    }
+    #primeraEquipacion{
+        margin: 50px 0px;
+
+    }
+    #primeraEquipacion img{
+        margin-bottom: 20px;
+
+    }
+    #segundaEquipacion img{
+        margin-bottom: 20px;
+
+    }

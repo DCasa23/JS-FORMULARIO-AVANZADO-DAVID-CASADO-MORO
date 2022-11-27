@@ -110,6 +110,7 @@ body{
     margin:30px 0px;
 }
 #parrafo{
+    min-height: 30px;
 text-align: center;
 }
 #form1{
@@ -345,7 +346,7 @@ ul li #textoabajo span{
    */
    
     display: inline-block;
-    background-image: url("../images/Teams/49Ers.png");
+    background-image: url("../images/Teams/SF49Ers.png");
     background-size: 100px 100px; 
     width:100px; 
     height:100px;
@@ -569,7 +570,7 @@ ul li #textoabajo span{
 
 
 #sidebar {
-visibility: hidden; 
+display:none;
 position: fixed;
 width: 400px;
 height: 100%;
@@ -581,7 +582,7 @@ transition: all 500ms linear;
     margin-right: 100px;
 }
 #sidebarright {
-visibility: hidden; 
+display:none;
 position: fixed;
 width: 400px;
 height: 100%;
@@ -624,4 +625,18 @@ div #precioTotal{
     margin-left: 20px;
     float:right;
     
+}
+#pelotabotando{
+    display: block;
+    position: relative;
+    margin-left: 30px;
+}
+#contenedorPelota{
+    display: block;
+    position: relative;
+    margin-left: 30px;
+}
+footer{
+    width: 100%;
+    overflow: hidden;
 }

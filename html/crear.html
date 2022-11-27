@@ -59,16 +59,18 @@
 
             </ul>
         </div>
-        <div><h2 id="precioTotal">Precio Total:     0€</h2>
-            
+        <div>
+            <h2 id="precioTotal">Precio Total: 0€</h2>
+
         </div>
         <div>
             <br><br><input id="botonEnviar" type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
         </div>
         <div>
-            <br><br><input id="botonBorrar" type="submit" style="width:250px;height:50px" placeholder="Submit" value="Borrar Carrito"><br><br>
+            <br><br><input id="botonBorrar" type="submit" style="width:250px;height:50px" placeholder="Submit"
+                value="Borrar Carrito"><br><br>
         </div>
-        
+
     </div>
 
 
@@ -88,17 +90,17 @@
                 </div>
                 <br><label for="USUARIO">Usuario:</label><br>
                 <div id="bloque"><input type="text" id="usuarioform" name="usuario" style="width:250px;height:20px"
-                        placeholder="" onkeyup="validarUsuarioForm()">
+                        placeholder="" onkeyup="validarUsuarioForm()" autocomplete="off">
                     <span id="textoUsuario"></span>
                 </div>
                 <br><label for="CORREO">Correo:</label><br>
                 <div id="bloque"><input type="text" id="correoform" name="correo" style="width:250px;height:20px"
-                        placeholder="" onkeyup="validarCorreoForm()">
+                        placeholder="" onkeyup="validarCorreoForm()" autocomplete="off">
                     <span id="textoCorreo"></span>
                 </div>
                 <br><label for="CONTRASEÑA">Contraseña:</label><br>
                 <div id="bloque"><input type="password" id="passwordform" name="password"
-                        style="width:250px;height:20px" placeholder="" onkeyup="validarPassword()">
+                        style="width:250px;height:20px" placeholder="" onkeyup="validarPassword()" autocomplete="off">
                     <span id="textoPassword"></span>
                 </div>
                 <br><label for="FECHA">Fecha de Nacimiento:</label><br>
@@ -107,46 +109,48 @@
                     <span id="textoFecha"></span>
                 </div>
                 <br><br><input type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
+                <br><br><button id="botonAtras0" type="button" style="width:250px;height:50px">Atras</button><br><br>
             </div>
             <div id="form2">
                 <label for="DNI">DNI:</label><br>
                 <div id="bloque"><input type="text" id="dniform" name="dni" style="width:250px;height:20px"
-                        placeholder="" onkeyup="validarDNIForm()">
+                        placeholder="" onkeyup="validarDNIForm()" autocomplete="off">
                     <span id="textoDni"></span>
                 </div>
                 <br><label for="TELEFONO">Telefono:</label><br>
                 <div id="bloque"><input type="text" id="telefonoform" name="telefono" style="width:250px;height:20px"
-                        placeholder="XXX-XXX-XXX o XXX-XX-XX-XX" onkeyup="validarTelefonoForm()">
+                        placeholder="XXX XXX XXX o XXX XX XX XX" onkeyup="validarTelefonoForm()" autocomplete="off">
                     <span id="textoTelefono"></span>
                 </div>
                 <br><label for="DIRECCION">Dirección:</label><br>
                 <div id="bloque"><input type="text" id="direccionform" name="direccion" style="width:250px;height:20px"
-                        placeholder="" onkeyup="validarDireccionForm()">
+                        placeholder="" onkeyup="validarDireccionForm()" autocomplete="off">
                     <span id="textoDireccion"></span>
                 </div>
                 <br><label for="CP">CP:</label><br>
                 <div id="bloque"><input type="number" id="cpform" name="cp" style="width:250px;height:20px"
-                        placeholder="" onkeyup="validarCPForm()">
+                        placeholder="" onkeyup="validarCPForm()" autocomplete="off">
                     <span id="textoCP"></span>
                 </div>
                 <br><label for="CIUDAD">Ciudad:</label><br>
                 <div id="bloque"><input type="text" id="ciudadform" name="ciudad" style="width:250px;height:20px"
-                        placeholder="" onkeyup="validarCiudadForm()">
+                        placeholder="" onkeyup="validarCiudadForm()" autocomplete="off">
                     <span id="textoCiudad"></span>
                 </div>
                 <br><label for="PAIS">País:</label><br>
                 <div id="bloque"><input type="text" id="paisform" name="pais" style="width:250px;height:20px"
-                        placeholder="" onkeyup="validarPaisForm()">
+                        placeholder="" onkeyup="validarPaisForm()" autocomplete="off">
                     <span id="textoPais"></span>
                 </div>
 
 
                 <br><br><input type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
+                <br><br><button id="botonAtras1" type="button" style="width:250px;height:50px">Atras</button><br><br>
             </div>
             <div id="form3">
                 <br><br><label for="IBAN">IBAN:</label><br>
                 <div id="bloque"><input type="text" id="ibanform" name="iban" style="width:250px;height:20px"
-                        placeholder="ESXX-XXXX-XXXX-XX-XXXXXXXXXX" onkeyup="validarIBANForm()">
+                        placeholder="ESXX XXXX XXXX XX XXXXXXXXXX" onkeyup="validarIBANForm()" autocomplete="off">
                     <span id="textoIBAN"></span>
                 </div>
                 <br><label for="SWIFT" id="swift2">Swift</label><br>
@@ -155,9 +159,14 @@
                         placeholder="Clicka aquí al introducir el IBAN" maxlength="0">
                     <span id="textoSWIFT"></span>
                 </div>
-
+                <div>
+                <br><label> Acepta las Condiciones de uso</label><input type="checkbox" id="condiciones" value="1"><br>
+                    
+                </div>
+                
 
                 <br><br><input type="submit" style="width:250px;height:50px" placeholder="Submit"><br><br>
+                <br><br><button id="botonAtras2" type="button" style="width:250px;height:50px">Atras</button><br><br>
             </div>
             <div id="form4">
                 <div id="opciones">
@@ -379,7 +388,7 @@
 
                     </ul>
                 </div>
-
+                <br><br><button id="botonAtras3" type="button" style="width:250px;height:50px">Atras</button><br><br>
             </div>
             <div id="form5">
                 <div id="opciones">
@@ -601,7 +610,7 @@
 
                     </ul>
                 </div>
-
+                <br><br><button id="botonAtras4" type="button" style="width:250px;height:50px">Atras</button><br><br>
             </div>
 
 
@@ -614,7 +623,12 @@
 
     </div>
     <footer>
-        <p id="parrafo"></p>
+        <div>
+            <p id="parrafo"></p>
+        </div>
+        <div>
+            <div id="contenedorPelota"><img id="pelotabotando" src="../images/pelota.webp" width="100px"></div>
+        </div>
     </footer>
 
     <script src="../js/myscript.js">
