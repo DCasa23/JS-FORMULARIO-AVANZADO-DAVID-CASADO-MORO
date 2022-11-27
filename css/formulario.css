@@ -1,10 +1,13 @@
+*:focus {
+    outline: none;
+}
+
 body{
-    font-family: 'Varela Round';
     margin: 0 auto;
     background-image: url(../images/fondo.jfif);
     background-repeat:no-repeat;background-size: 100% 100%;background-attachment:fixed;background-blend-mode: lighten;background-color: rgba(163, 163, 159, 0.8);
 }
-
+/*Cabecera del formulario*/
 .cabecera{
     min-height: 150px;
     padding-top: 0;
@@ -55,39 +58,83 @@ body{
     height:100px;
    
 }
-
-
+/*Principal y contenido formulario*/
 #principal{
     padding:30px 0px;
     background-color: rgba(250, 255, 254, 0.8);
     border: 2px solid black;
     width: 650px;
     margin:0px auto;
-    height: 325px;
-    text-align: center;
+    height: 560px;
 }
-#contenedorCrearSesion{
+#formulario{
+    height:600px;
     overflow: hidden;
-    width: 100%;
-    height: 400px;
-}
-#mensajeCrear
-{
-    position: relative;
     display: block;
-    margin-left:100%;
-    padding:20px 0px;
-    background-color: rgba(250, 255, 254, 0.8);
-    border: 2px solid black;
-    width: 950px;
-    
-    height: 325px;
+    margin:auto;
     text-align: center;
-}
-#contenedor{
-    width: 950px;
+    
+    
+    position:relative;
+    width: 80%;
+    
     
 }
-#botonCrear{
-    margin-top: 50px;
+#bloque{
+    position: relative;
+}
+#formulario label{
+    font-weight: bold;
+    font-size: 20px;
+}
+#formulario input{
+    text-align: center;
+    width: 100%;
+	background: #fff;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+#form1 span{
+    position: absolute;
+	
+
+	
+}
+#form2 span{
+    position: absolute;
+	
+
+	
+}
+
+#parrafo{
+    min-height: 30px;
+text-align: center;
+}
+#form1{
+    display:block;
+}
+#form2{
+    
+    display:none;
+}
+#form3{
+    
+    display:none;
+}
+/*Footer y su contenido*/
+#pelotabotando{
+    display: block;
+    position: relative;
+    margin-left: 30px;
+}
+#contenedorPelota{
+    width: 150px;
+    display: block;
+    position: relative;
+    margin-left: 30px;
+}
+footer{
+    
+    overflow: hidden;
 }

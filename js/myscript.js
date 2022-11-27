@@ -1,5 +1,5 @@
-console.log("El usuario: " + localStorage.getItem('usuario'));
-console.log("La contraseña: " + localStorage.getItem('password'));
+//Aquí se encontrarán las diferentes variables que se usarán a lo largo del formulario
+
 const nombre = document.getElementById("nombreform")
 const apellidos = document.getElementById("apellidosform")
 const correo = document.getElementById("correoform")
@@ -19,14 +19,12 @@ const pais = document.getElementById("paisform")
 const carritoPartidos = document.getElementById("listaCarrito")
 const condiciones=document.getElementById("condiciones")
 
-let x = "";
-let resultado = "";
 
 let colorequipo = "";
-let equipo2 = "";
-let equipo3 = "";
-let equipo8 = "";
-let equipo12 = "";
+let equipoElegido = "";
+let objetoEquipo = "";
+let equipoAdversario = "";
+let equipoAdversarioImagen = "";
 let liga = "";
 let contador = 0;
 let lineaCompra = "";
@@ -39,8 +37,10 @@ let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let regexIBAN = /^(ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{2}[ ]\d{10})$/;
 let regexDNI = /^(\d{8})([A-z])$/;
 let regexMOVIL = /^(\d{3}[ ]\d{3}[ ]\d{3})|(\d{3}[ ]\d{2}[ ]\d{2}[ ]\d{2})$/;
-valor = Math.floor(Math.random() * 18)
+valor = Math.floor(Math.random() * (18-1)+1)
 
+
+//La clase bono nos permitirá clasificar y almacenar los bonos del carrito
 class Bono {
     constructor(equipo, liga, partidos) {
         this.equipo = equipo;
@@ -64,7 +64,7 @@ class Bono {
 
 
 }
-
+//La clase usuario almacenará toda la informacion validada en el formulario
 class Usuario {
 
     constructor(nombreUsuario, usuarioUsuario, passwordUsuario, fechaUsuario, apellidosUsuario, correoUsuario, DNIUsuario, telefonoUsuario, direccionUsuario, CPUsuario, ciudadUsuario, paisUsuario, IBANUsuario, SWIFTUsuario) {
@@ -88,18 +88,17 @@ class Usuario {
 
 
 }
-
+//Estas funciones de JQuery nos permitirán seleccionar el equipo que queremos elegir 
 
 $("#equipos li").click(function () {
-    equipo2 = $(this).attr('id');
+    equipoElegido = $(this).attr('id');
     if ($('#form4').find(this).length) {
 
-        liga = "NFC";
+        liga = "AFC";
     } else {
 
-        liga = "AFC";
+        liga = "NFC";
     }
-    console.log(equipo2);
     
     $("#sidebar").animate({ opacity: '0.0' }, "high");
     $("#sidebar").animate({ opacity: '0.8' }, "slow");
@@ -109,33 +108,34 @@ $("#equipos li").click(function () {
     colorequipo = $(this).css('background-image');
     colorequipo = colorequipo.replace('url(', '').replace(')', '').replace(/\"/gi, "");
     
-    $("#tituloEquipo").append("<img src=" + colorequipo + " style=\"width:100px\";\"height:200px\"><h1 style=\"float:right ; background-color:grey;margin-right:50px;-webkit-text-stroke: 0.2px white;color: black;\";>&nbsp;" + equipo2 + "&nbsp;</h1>");
-    if (liga == "NFC") {
-        equipo8 = $("#form5 #equipos ul li:nth-child(" + valor + ")").attr('id');
-        console.log("ESTAS EN LA LIGA NFC")
+    $("#tituloEquipo").append("<img src=" + colorequipo + " style=\"width:100px\";\"height:200px\"><h1 style=\"float:right ; background-color:grey;margin-right:50px;-webkit-text-stroke: 0.2px white;color: black;\";>&nbsp;" + equipoElegido +"</h1>");
+    if (liga == "AFC") {
+        equipoAdversario = $("#form5 #equipos ul li:nth-child(" + valor + ")").attr('id');
     } else {
-        equipo8 = $("#form4 #equipos ul li:nth-child(" + valor + ")").attr('id');
-        console.log("ESTAS EN LA LIGA AFC")
+        equipoAdversario = $("#form4 #equipos ul li:nth-child(" + valor + ")").attr('id');
     }
 
-    equipo12 = $('#' + equipo8).css('background-image');
-    equipo8 = equipo12.replace('url(', '').replace(')', '').replace(/\"/gi, "");
+    equipoAdversarioImagen = $('#' + equipoAdversario).css('background-image');
+    equipoAdversario = equipoAdversarioImagen.replace('url(', '').replace(')', '').replace(/\"/gi, "");
     
 });
+
+// Este funcion permitirá seleccionar la opcion de numeros de partidos
+
 $("#botonizq").click(function () {
-    if (arrayEquiposFiltro.includes(equipo2)) {
+    if (arrayEquiposFiltro.includes(equipoElegido)) {
         $("#parrafo").text("Ya ha introducido una compra para ese Equipo");
     } else {
         localStorage.setItem('equipoFavorito', colorequipo);
-        localStorage.setItem('equipoEnemigo', equipo8);
-        localStorage.setItem('nombreEquipo', equipo2);
+        localStorage.setItem('equipoEnemigo', equipoAdversario);
+        localStorage.setItem('nombreEquipo', equipoElegido);
         $("#parrafo").empty();
-        arrayEquiposFiltro.push(equipo2);
+        arrayEquiposFiltro.push(equipoElegido);
         lineaCompra = ($('input[name=numero]:checked').val());
 
-        equipo3 = equipo2;
-        equipo3 = new Bono(equipo2, liga, lineaCompra);
-        arrayEquipos.push(equipo3);
+        objetoEquipo = equipoElegido;
+        objetoEquipo = new Bono(equipoElegido, liga, lineaCompra);
+        arrayEquipos.push(objetoEquipo);
 
         $("#sidebarright").animate({ opacity: '0.0' }, "high");
         $("#sidebarright").animate({ opacity: '0.8' }, "slow");
@@ -151,7 +151,10 @@ $("#botonizq").click(function () {
 
 });
 
+//Estas funciones JQuery permitirán confirmar o borrar la cesta de la compra en la última etapa del formulario  
+
 $("#botonBorrar").click(function () {
+    console.log("ENTRAS")
     $('#carrito li').remove();
     precioTotal = 0;
     arrayEquipos = [];
@@ -172,16 +175,21 @@ $("#botonEnviar").click(function () {
 })
 
 
-function moverNFC() {
+//Estas dos funciones permitirán movernos entre las dos ligas 
+
+function moverAFC() {
     document.getElementById("form4").style.display = "block";
     document.getElementById("form5").style.display = "none";
 }
-function moverAFC() {
+function moverNFC() {
     document.getElementById("form4").style.display = "none";
     document.getElementById("form5").style.display = "block";
 }
+
+//Serán las diferentes validaciones de los campos del formulario a tiempo real por medio ONKEYUP
+
 function validarName() {
-    if (nombre.value.length < 5) {
+    if (nombre.value.length < 2) {
         nombre.style.border = '2px solid red';
         nombre.style.background = '#ff99b2';
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El nombre introducido es pequeño o esta vacio</span>";
@@ -338,7 +346,7 @@ function validarDNIForm() {
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El dni introducido es pequeño o esta vacio</span>";
         document.getElementById("textoDni").innerHTML = "";
 
-        //warnings += ' El Dni esta vacio <br><br>'
+        
         incorrectoDni = true;
 
         password
@@ -361,7 +369,7 @@ function validarDireccionForm() {
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El direccion introducido es pequeño o esta vacio</span>";
         document.getElementById("textoDireccion").innerHTML = "";
 
-        //warnings += ' El direccion esta vacio <br><br>'
+        
         incorrectoDireccion = true;
 
 
@@ -383,7 +391,7 @@ function validarCPForm() {
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El cp introducido es pequeño o esta vacio</span>";
         document.getElementById("textoCP").innerHTML = "";
 
-        //warnings += ' El cp esta vacio <br><br>'
+       
         incorrectoCP = true;
 
 
@@ -406,7 +414,7 @@ function validarCiudadForm() {
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El ciudad introducido es pequeño o esta vacio</span>";
         document.getElementById("textoCiudad").innerHTML = "";
 
-        //warnings += ' El ciudad esta vacio <br><br>'
+       
         incorrectoCiudad = true;
 
 
@@ -428,7 +436,7 @@ function validarPaisForm() {
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>El pais introducido es pequeño o esta vacio</span>";
         document.getElementById("textoPais").innerHTML = "";
 
-        //warnings += ' El pais esta vacio <br><br>'
+       
         incorrectoPais = true;
 
 
@@ -503,17 +511,13 @@ function validarSWIFTForm() {
     }
 }
 function validarCondiciones() {
-    console.log("HAS ENTRADO Y EL VALOR de ES :"+condiciones.checked)
+    
     if (condiciones.checked == true) {
-        
-        console.log("BIEEEEEnHAS ENTRADO Y EL VALOR de ES :"+condiciones.value)
         
         document.getElementById("parrafo").innerHTML = "";
         incorrectoCondiciones = false;
 
     } else {
-
-        console.log("NO HAS ENTRADO Y EL VALOR de ES :"+condiciones.checked)
         
         document.getElementById("parrafo").innerHTML = "<span style='color: black;font-weight: bold;opacity:1.25;'>Tienes que Aceptar las condiciones para acceder</span>";
         document.getElementById("textoPais").innerHTML = "";
@@ -521,11 +525,12 @@ function validarCondiciones() {
         
         incorrectoCondiciones = true;
 
-        /*
         
-        */
     }
 }
+
+//Está función JS permité validar y pasar a las siguientes etapas al validar todas las validaciones juntas
+
 
 formulario.addEventListener("submit", e => {
     incorrecto1 = true;
@@ -556,38 +561,25 @@ formulario.addEventListener("submit", e => {
         validarCondiciones();
     }
     if (incorrectoApellidos == false && incorrectoNombre == false && incorrectoPassword == false && incorrectoUsuario == false && incorrectoFecha == false && incorrectoCorreo == false) {
-        console.log("Este " + apellidos.value);
-        console.log("ESTE ES EL NOMBRE DEFIN: " + nombre.value);
+
         datosTotales = new Usuario(nombre.value, usuario.value, password.value, fecha.value, apellidos.value, correo.value, dni.value, telefono.value, direccion.value, cp.value, ciudad.value, pais.value, iban.value, swift.placeholder);
         const myJSON = JSON.stringify(datosTotales);
-        const myObj2 = JSON.parse(myJSON);
-        x = myObj2.nombreUsuario;
-        console.log("LA FECHA ES: " + fecha.value);
-        console.log("Nombre por JSON: " + x);
-        console.log("Usuario por JSON: " + myObj2.usuarioUsuario);
-        console.log("Passw por JSON: " + myObj2.passwordUsuario);
-        console.log("Passw por JSON: " + myObj2.fechaUsuario);
-        localStorage.setItem('nombre', myObj2.nombreUsuario);
-        localStorage.setItem('fecha', myObj2.fechaUsuario);
-        localStorage.setItem('usuario', myObj2.usuarioUsuario);
-        localStorage.setItem('password', myObj2.passwordUsuario);
-        localStorage.setItem('apellidos', myObj2.apellidosUsuario);
-        localStorage.setItem('correo', myObj2.correoUsuario);
-        localStorage.setItem('DNI', myObj2.DNIUsuario);
-        localStorage.setItem('telefono', myObj2.telefonoUsuario);
-        localStorage.setItem('direccion', myObj2.direccionUsuario);
-        localStorage.setItem('CP', myObj2.CPUsuario);
-        localStorage.setItem('ciudad', myObj2.ciudadUsuario);
-        localStorage.setItem('pais', myObj2.paisUsuario);
-        localStorage.setItem('SWIFT', myObj2.SWIFTUsuario);
-        localStorage.setItem('IBAN', myObj2.IBANUsuario);
-        /* localStorage.setItem('myArray', JSON.stringify(arrayEquiposFiltro));*/
-
-
-
-        console.log("El usuario introducido: " + localStorage.getItem('usuario'));
-        console.log("La contraseña introducido: " + localStorage.getItem('password'));
-        console.log("La FECHA ES LA SIGUIENTE introducido: " + localStorage.getItem('fecha'));
+        const ObjCliente = JSON.parse(myJSON);
+        localStorage.setItem('nombre', ObjCliente.nombreUsuario);
+        localStorage.setItem('fecha', ObjCliente.fechaUsuario);
+        localStorage.setItem('usuario', ObjCliente.usuarioUsuario);
+        localStorage.setItem('password', ObjCliente.passwordUsuario);
+        localStorage.setItem('apellidos', ObjCliente.apellidosUsuario);
+        localStorage.setItem('correo', ObjCliente.correoUsuario);
+        localStorage.setItem('DNI', ObjCliente.DNIUsuario);
+        localStorage.setItem('telefono', ObjCliente.telefonoUsuario);
+        localStorage.setItem('direccion', ObjCliente.direccionUsuario);
+        localStorage.setItem('CP', ObjCliente.CPUsuario);
+        localStorage.setItem('ciudad', ObjCliente.ciudadUsuario);
+        localStorage.setItem('pais', ObjCliente.paisUsuario);
+        localStorage.setItem('SWIFT', ObjCliente.SWIFTUsuario);
+        localStorage.setItem('IBAN', ObjCliente.IBANUsuario);
+    
 
         incorrecto1 = false;
     }
@@ -601,15 +593,8 @@ formulario.addEventListener("submit", e => {
             incorrecto3 = false;
         }
     }
-    console.log("ES nombre: " + incorrectoNombre);
-    console.log("ES apellido: " + incorrectoApellidos);
-    console.log("EScorreo: " + incorrectoCorreo);
-    console.log("ES Passw: " + incorrectoPassword);
-    console.log("ESusuarii: " + incorrectoUsuario);
-    console.log("ESfecha: " + incorrectoFecha);
-    console.log("ES: " + incorrecto1);
-    console.log(nombre.value.length);
 
+    //En cada caso, podremos pasar por medio de un interruptor y contador para saber en que etapa nos encontramos. También controlaremos la pelota
 
     if ((incorrecto1 == false && contador == 0) || (incorrecto2 == false && contador == 1) || (incorrecto3 == false && contador == 2)) {
         switch (contador) {
@@ -690,9 +675,11 @@ formulario.addEventListener("submit", e => {
                 break;
         }
     } else {
-        console.log("TODO ES FALSO")
     }
 });
+
+//Mediante JQuery podremos desplazarnos hacia atras
+
 $("#botonAtras0").click(function () {
     window.location.href = '../inicio.html';
 })
@@ -713,8 +700,8 @@ $("#botonAtras3").click(function () {
     document.getElementById("form5").style.display = "none";
     document.getElementById("form3").style.display = "block";
     document.getElementById("principal").style.padding = "30px 0px";
-    document.getElementById("principal").style.height = "560px";
-    document.getElementById("formulario").style.height = "80%";
+    document.getElementById("principal").style.height = "600px";
+    document.getElementById("formulario").style.height = "100%";
     contador = 2;
 })
 $("#botonAtras4").click(function () {
@@ -729,8 +716,9 @@ $("#botonAtras4").click(function () {
 })
 
 
+//Función para obtener el SWIFT por medio del IBAN
+
 function getBICBank(entidad) {
-    console.log("ha ENTRADO");
     var bicMap = new Object();
     bicMap["0001"] = "BSABESBBXXX";
     bicMap["0003"] = "BDEPESM1XXX";
